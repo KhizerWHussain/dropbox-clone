@@ -11,9 +11,11 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { Box } from "@chakra-ui/react";
+import GiantText from "../GiantText";
 
 const Base = () => {
-  const targetRef = useRef(null);
+  const targetRef = useRef<any | null>(null);
+
   const { scrollY } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
@@ -31,7 +33,6 @@ const Base = () => {
       <Header />
       <Box ref={targetRef} position="relative">
         <Box style={{ position: "sticky" }}>
-          {/* <Box style={{ position: "sticky", top: 20 }}> */}
           <AnimatePresence mode="sync">
             <motion.div
               initial={{ opacity: 1, top: 0 }}
@@ -49,11 +50,12 @@ const Base = () => {
               transition={{ duration: 1.5, ease: "easeInOut" }}
               style={{ height: "80vh", position: "sticky" }}
             >
-              <HeroContent scale={scale} />
+              <HeroContent scale={scale} opacity={opacity} />
             </motion.div>
           </AnimatePresence>
         </Box>
       </Box>
+      <GiantText />
     </>
   );
 };
