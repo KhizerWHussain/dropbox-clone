@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import DropboxDesktop from "../../../public/images/hero/hero-desktop.png";
-import DropboxMobile from "../../../public/images/hero/hero-mobile.png";
+// import DropboxDesktop from "../../../public/images/hero/hero-desktop.png";
 
+import DropboxMobile from "../../../public/images/hero/hero-mobile.png";
 import DropboxDesktopWithoutBackground from "../../../public/images/hero/heroDesktop.png";
 
 import { Avatar } from "@/components/ui/avatar";

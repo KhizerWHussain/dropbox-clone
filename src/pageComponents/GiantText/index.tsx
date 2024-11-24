@@ -1,6 +1,6 @@
 "use client";
-import { Box, Text } from "@chakra-ui/react";
-import React, { useEffect, useRef, useState } from "react";
+import { Box } from "@chakra-ui/react";
+import React, { useRef } from "react";
 import { Colors } from "../../../constants";
 import { useScroll, useTransform, motion } from "framer-motion";
 
@@ -138,7 +138,9 @@ const Span = ({
   setIsAnimating,
 }: any) => {
   // const opacity = useTransform(progress, range, [0.25, 1]);
-  const opacity = !hasOpacity ? useTransform(progress, range, [0.25, 1]) : 1;
+  // const opacity = !hasOpacity ? useTransform(progress, range, [0.25, 1]) : 1;
+
+  const opacity = useTransform(progress, range, [0.25, 1]);
 
   // const handleAnimationStart = () => {
   //   setIsAnimating(true); // Lock scroll
@@ -159,7 +161,7 @@ const Span = ({
         fontWeight: 550,
         letterSpacing: 1,
         color: wordColor,
-        opacity,
+        opacity: !hasOpacity ? opacity : 1,
       }}
       // onAnimationStart={handleAnimationStart}
       // onAnimationComplete={handleAnimationComplete}

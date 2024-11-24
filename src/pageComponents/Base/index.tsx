@@ -11,7 +11,6 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { Box } from "@chakra-ui/react";
-import GiantText from "../GiantText";
 import Base2 from "../Base2";
 
 const Base = () => {

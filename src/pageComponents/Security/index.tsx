@@ -1,9 +1,56 @@
-import { Box, Text } from "@chakra-ui/react";
-import React from "react";
-import { BiLock } from "react-icons/bi";
-import { FaArrowRight } from "react-icons/fa6";
+import { Box } from "@chakra-ui/react";
+import React, { useRef } from "react";
+import SecurityImages from "./images";
+import SecurityText from "./text";
+import Testimonials from "../Testimonials";
+import Companies from "../Companies";
+import {
+  motion,
+  // useAnimation,
+  // useInView,
+  // useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 const Security = () => {
+  // const controls = useAnimation();
+  // const targetRef = useRef(null);
+  // const isInView = useInView(targetRef, { once: false });
+
+  // useEffect(() => {
+  //   if (isInView) {
+  //     controls.start({ maxWidth: "90%" });
+  //   }
+  // }, [isInView, controls]);
+
+  // const { scrollYProgress } = useScroll(); // Hook to track scroll progress
+  // const maxWidth = useTransform(scrollYProgress, [0, 0.5], ["80%", "90%"]); // Map scroll progress to height values
+
+  // console.log("scrollYProgress ==>", scrollYProgress);
+
+  const targetRef = useRef<any | null>(null);
+  // const [scrollPosition, setScrollPosition] = useState<number>(0);
+
+  // const { scrollY } = useScroll({
+  //   target: targetRef,
+  //   offset: ["start start", "end end"],
+  // });
+
+  // useMotionValueEvent(scrollY, "change", () => {
+  //   console.log(scrollY.get());
+  //   // setScrollPosition(scrollY.get());
+  // });
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef, // Track only this component
+    offset: ["start end", "end start"], // Start animating when the component enters and exits the viewport
+  });
+
+  // const maxWidth = useTransform(scrollY, [5000, 5550], ["80%", "90%"]);
+
+  const maxWidth = useTransform(scrollYProgress, [0, 0.4], ["80%", "90%"]);
+
   return (
     <>
       <Box
@@ -11,121 +58,39 @@ const Security = () => {
           height: "200vh",
           width: "100vw",
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           color: "white",
         }}
       >
-        <Box
-          maxW="3/4"
-          minW="3/4"
-          backgroundColor="#282B2F"
-          borderRadius="1rem"
+        <motion.div
+          ref={targetRef}
+          // maxW="3/4"
+          // minW="3/4"
+          // initial={{ maxWidth: "80%" }}
+          // exit={{ maxWidth: "80%" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          // animate={controls}
           style={{
+            minWidth: "80%",
+            maxWidth,
+            backgroundColor: "#282B2F",
+            borderRadius: "1rem",
+            display: "flex",
+            flexDirection: "column",
             height: "100%",
             justifyContent: "center",
-            alignContent: "center",
+            gap: "1rem",
             alignItems: "center",
+            overflow: "hidden",
           }}
         >
-          <Box
-            style={{
-              height: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
-          >
-            <BiLock size={48} />
-            <Text style={{ fontSize: 30, fontWeight: 550 }}>
-              Security never comes second
-            </Text>
-            <Text
-              maxW="5/6"
-              style={{ fontSize: 16, textAlign: "center", opacity: 0.7 }}
-            >
-              From industry-leading encryption and tamper-proof documents to
-              version history and recovery, Dropbox keeps your intellectual
-              property safe and never sells or shares your data.
-            </Text>
-            <Box
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              gap="10"
-              marginTop="4"
-              textAlign="center"
-              minWidth="3/4"
-              maxWidth="3/4"
-            >
-              <Box
-                style={{
-                  display: "flex",
-                  borderRadius: "1rem",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingTop: "0.8rem",
-                  paddingBottom: "0.8rem",
-                  paddingRight: "1.75rem",
-                  paddingLeft: "1.75rem",
-                  border: "2px solid white",
-                }}
-              >
-                <Box
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    color: "white",
-                  }}
-                >
-                  Get started free
-                </Box>
-                <FaArrowRight
-                  color="white"
-                  arabicForm="isolated"
-                  overlineThickness={10}
-                  style={{
-                    fontWeight: 200,
-                    marginLeft: "0.5rem",
-                  }}
-                />
-              </Box>
-              <Box
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text
-                  style={{
-                    textDecoration: "underline",
-                    fontSize: 16,
-                    fontWeight: 600,
-                    textUnderlineOffset: "2px",
-                    textDecorationThickness: "1px",
-                    opacity: 0.95,
-                  }}
-                >
-                  Learn more
-                </Text>
-                <FaArrowRight
-                  color="white"
-                  arabicForm="isolated"
-                  overlineThickness={10}
-                  style={{
-                    fontWeight: 200,
-                    marginLeft: "0.5rem",
-                  }}
-                />
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+          <SecurityText />
+          <SecurityImages />
+          <Testimonials />
+          <Companies />
+        </motion.div>
       </Box>
     </>
   );
