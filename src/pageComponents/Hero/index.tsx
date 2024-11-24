@@ -3,10 +3,11 @@ import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { Colors } from "../../../constants";
 import { FaArrowRight } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 
 interface HeroProp {
   scale?: any;
+  opacity: MotionValue<number>;
 }
 
 const Hero = ({ scale }: HeroProp) => {
@@ -33,6 +34,7 @@ const Hero = ({ scale }: HeroProp) => {
           alignItems: "center",
           justifyContent: "center",
           width: "100vw",
+          // opacity,
         }}
       >
         <Box
@@ -77,7 +79,6 @@ const Hero = ({ scale }: HeroProp) => {
             marginTop="6"
           >
             <Box
-              backgroundColor={Colors.primary}
               display="flex"
               style={{
                 borderRadius: "1rem",
@@ -87,14 +88,15 @@ const Hero = ({ scale }: HeroProp) => {
                 paddingBottom: "1.3rem",
                 paddingRight: "1.8rem",
                 paddingLeft: "1.8rem",
+                backgroundColor: Colors.primary,
               }}
             >
               <Box
-                backgroundColor={Colors.primary}
                 style={{
                   fontSize: 16,
                   fontWeight: 600,
                   color: "black",
+                  backgroundColor: Colors.primary,
                 }}
               >
                 Sign up free

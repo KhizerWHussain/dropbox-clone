@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Header from "@/pageComponents/Header";
 import Hero from "../Hero";
 import HeroContent from "../HeroContent";
@@ -12,9 +12,11 @@ import {
 } from "framer-motion";
 import { Box } from "@chakra-ui/react";
 import GiantText from "../GiantText";
+import Base2 from "../Base2";
 
 const Base = () => {
   const targetRef = useRef<any | null>(null);
+  // const [scrollPosition, setScrollPosition] = useState<number>(0);
 
   const { scrollY } = useScroll({
     target: targetRef,
@@ -22,11 +24,17 @@ const Base = () => {
   });
 
   useMotionValueEvent(scrollY, "change", () => {
-    console.log(scrollY.get());
+    // console.log(scrollY.get());
+    // setScrollPosition(scrollY.get());
   });
 
   const scale = useTransform(scrollY, [0, 350], [1, 0.95]);
   const opacity = useTransform(scrollY, [0, 350], [1, 0]);
+  // const backgroundColor = useTransform(
+  //   scrollY,
+  //   [0, 350],
+  //   ["black", Colors.back]
+  // );
 
   return (
     <>
@@ -43,8 +51,9 @@ const Base = () => {
                 opacity,
               }}
             >
-              <Hero scale={scale} />
+              <Hero scale={scale} opacity={opacity} />
             </motion.div>
+
             <motion.div
               initial={{ opacity: 1 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -55,7 +64,7 @@ const Base = () => {
           </AnimatePresence>
         </Box>
       </Box>
-      <GiantText />
+      <Base2 />
     </>
   );
 };

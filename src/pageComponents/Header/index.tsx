@@ -49,8 +49,8 @@ const Header = () => {
         style={{
           overflowX: "hidden",
           width: "100vw",
-          paddingTop: isScrolled ? "1.2rem" : "1.7rem",
-          paddingBottom: isScrolled ? "1.2rem" : "1.7rem",
+          paddingTop: isScrolled ? "0.65rem" : "1.7rem",
+          paddingBottom: isScrolled ? "0.65rem" : "1.7rem",
           paddingRight: "1.5rem",
           paddingLeft: "1.5rem",
           backgroundColor: isScrolled
