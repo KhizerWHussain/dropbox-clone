@@ -114,15 +114,15 @@ const Header = () => {
                   alignItems: "center",
                   gap: 2.5,
                 }}
+                _hover={{
+                  color: Colors.primary,
+                }}
               >
                 <Text
                   style={{
                     fontWeight: 550,
                     fontSize: 14,
                     cursor: "pointer",
-                  }}
-                  _hover={{
-                    color: Colors.primary,
                   }}
                 >
                   {item.title}
@@ -159,15 +159,15 @@ const Header = () => {
                   alignItems: "center",
                   gap: 2.5,
                 }}
+                _hover={{
+                  color: Colors.primary,
+                }}
               >
                 <Text
                   style={{
                     fontWeight: 500,
                     fontSize: 14,
                     cursor: "pointer",
-                  }}
-                  _hover={{
-                    color: Colors.primary,
                   }}
                 >
                   {item.title}

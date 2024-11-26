@@ -1,4 +1,5 @@
-import { Avatar, Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,17 +14,59 @@ const DiscoveryCard = ({ desc, image, title }: DisoveryCardProp) => {
     <>
       <Box
         style={{
-          height: "60vh",
+          height: "70vh",
+          backgroundColor: "white",
+          borderRadius: "1rem",
+          cursor: "pointer",
         }}
+        width="1/3"
       >
-        <Box>
-          {/* <Avatar /> */}
+        <Box
+          style={{
+            padding: "0.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            height: "100%",
+          }}
+        >
           <Box>
-            <Text>Article</Text>
-            <Text>title</Text>
-            <Text>desc</Text>
+            <Image
+              src={image}
+              alt={title}
+              height={400}
+              width={400}
+              style={{ borderRadius: "1rem", width: "100%" }}
+            />
           </Box>
-          <Link href="">Read Article</Link>
+          <Flex
+            direction="column"
+            gap="4"
+            style={{ padding: "1rem", height: "100%" }}
+          >
+            <Text fontSize={12} fontWeight={600} color="darkgray">
+              Article
+            </Text>
+            <Text fontSize={18} fontWeight={550}>
+              {title}
+            </Text>
+            <Text fontSize={14} fontWeight={400} opacity={0.8}>
+              {desc}
+            </Text>
+          </Flex>
+          <Link
+            href=""
+            style={{
+              padding: "1rem",
+              textDecoration: "underline",
+              fontWeight: 600,
+              color: "black",
+              opacity: 0.9,
+              textUnderlineOffset: "0.15rem",
+            }}
+          >
+            Read Article
+          </Link>
         </Box>
       </Box>
     </>
