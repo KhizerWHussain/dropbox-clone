@@ -14,11 +14,7 @@ interface RootLayoutProp {
 
 export default function RootLayout({ children }: Readonly<RootLayoutProp>) {
   return (
-    <html
-      lang="en"
-      suppressContentEditableWarning={true}
-      suppressHydrationWarning={true}
-    >
+    <html lang="en">
       <body>
         <Provider>{children}</Provider>
       </body>

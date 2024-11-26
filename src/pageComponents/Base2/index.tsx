@@ -6,6 +6,8 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import DocSend from "../DocSend";
 import { PiMonitorPlay } from "react-icons/pi";
 import Security from "../Security";
+import Industries from "../Industries";
+import Discover from "../Discover";
 
 const documentImage =
   "https://fjord.dropboxstatic.com/warp/conversion/dropbox/warp/en-us/test/homepageredesign2024/features/docsend/docsend-feature-photo.png?id=16ad971c-bbd8-4c11-a10d-7b794636ac79&output_type=png";
@@ -53,6 +55,10 @@ const Base2 = () => {
       <DocSend imageSource={feedBackImage} videoSource={feedBackVideo} />
 
       <Security />
+
+      <Industries />
+
+      <Discover />
     </>
   );
 };

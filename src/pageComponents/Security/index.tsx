@@ -55,7 +55,7 @@ const Security = () => {
     <>
       <Box
         style={{
-          height: "200vh",
+          height: "250vh",
           width: "100vw",
           display: "flex",
           flexDirection: "column",
@@ -75,12 +75,13 @@ const Security = () => {
           style={{
             minWidth: "80%",
             maxWidth,
-            backgroundColor: "#282B2F",
+            // backgroundColor: "#282B2F",
+            background: "linear-gradient(to bottom, #282B2F, #000000)",
             borderRadius: "1rem",
             display: "flex",
             flexDirection: "column",
             height: "100%",
-            justifyContent: "center",
+            justifyContent: "space-evenly",
             gap: "1rem",
             alignItems: "center",
             overflow: "hidden",

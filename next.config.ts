@@ -7,11 +7,12 @@ const nextConfig: NextConfig = {
   cleanDistDir: true,
   distDir: ".next",
   excludeDefaultMomentLocales: true,
-  output: "export",
+  // output: "export",
   reactStrictMode: true,
   crossOrigin: "anonymous",
   images: {
     // domains: ["fjord.dropboxstatic.com"],
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: "https",

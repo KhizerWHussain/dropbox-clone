@@ -8,17 +8,17 @@ import { FaDropbox } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 
 const headerOnLeftArray = [
-  { title: "Products", haveDropDown: true },
-  { title: "Solutions", haveDropDown: true },
-  { title: "Enterprise", haveDropDown: false },
-  { title: "Pricing", haveDropDown: false },
+  { id: 1, title: "Products", haveDropDown: true },
+  { id: 2, title: "Solutions", haveDropDown: true },
+  { id: 3, title: "Enterprise", haveDropDown: false },
+  { id: 4, title: "Pricing", haveDropDown: false },
 ];
 
 const headerOnRightArray = [
-  { title: "Contact Sales", haveDropDown: false },
-  { title: "Get app", haveDropDown: true },
-  { title: "Sign up", haveDropDown: false },
-  { title: "Log in", haveDropDown: false },
+  { id: 1, title: "Contact Sales", haveDropDown: false },
+  { id: 2, title: "Get app", haveDropDown: true },
+  { id: 3, title: "Sign up", haveDropDown: false },
+  { id: 4, title: "Log in", haveDropDown: false },
 ];
 
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && window) {
       const handleScroll = () => {
         if (window.scrollY > 100) {
           setIsScrolled(true);
@@ -107,7 +107,7 @@ const Header = () => {
           >
             {headerOnLeftArray.map((item: any, i: number) => (
               <Box
-                key={i}
+                key={`${i}.${item.id}`}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -152,7 +152,7 @@ const Header = () => {
             </Box>
             {headerOnRightArray.map((item: any, i: number) => (
               <Box
-                key={i}
+                key={`${i}.${item.id}`}
                 style={{
                   display: "flex",
                   justifyContent: "center",

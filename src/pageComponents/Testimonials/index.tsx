@@ -2,8 +2,6 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import Testimonial from "./component";
 import { testimonialsArray, testimonialType } from "./data";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
 
 const settings: Settings = {
@@ -34,7 +32,7 @@ const Testimonials = () => {
     <Box width="100%">
       <Slider {...settings}>
         {testimonialsArray.map((item: testimonialType, i: number) => (
-          <Testimonial item={item} key={i} />
+          <Testimonial item={item} key={`${i}.${item.id}`} />
         ))}
       </Slider>
     </Box>

@@ -110,7 +110,7 @@ const GiantText = () => {
 
             return (
               <Span
-                key={i}
+                key={`${i}.${item}`}
                 range={[start, end]}
                 progress={scrollYProgress}
                 wordColor={wordColor}
