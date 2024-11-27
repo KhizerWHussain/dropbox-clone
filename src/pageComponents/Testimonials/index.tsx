@@ -32,7 +32,7 @@ const Testimonials = () => {
     <Box width="100%">
       <Slider {...settings}>
         {testimonialsArray.map((item: testimonialType, i: number) => (
-          <Testimonial item={item} key={`${i}.${item.id}`} />
+          <Testimonial item={item} key={`${i}.${item.id}`} index={i} />
         ))}
       </Slider>
     </Box>

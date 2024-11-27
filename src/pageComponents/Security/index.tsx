@@ -66,16 +66,10 @@ const Security = () => {
       >
         <motion.div
           ref={targetRef}
-          // maxW="3/4"
-          // minW="3/4"
-          // initial={{ maxWidth: "80%" }}
-          // exit={{ maxWidth: "80%" }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          // animate={controls}
           style={{
             minWidth: "80%",
             maxWidth,
-            // backgroundColor: "#282B2F",
             background: "linear-gradient(to bottom, #282B2F, #000000)",
             borderRadius: "1rem",
             display: "flex",
@@ -84,6 +78,7 @@ const Security = () => {
             justifyContent: "space-evenly",
             gap: "1rem",
             alignItems: "center",
+            alignContent: "center",
             overflow: "hidden",
           }}
         >

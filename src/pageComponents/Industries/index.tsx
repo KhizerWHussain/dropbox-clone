@@ -7,12 +7,11 @@ import { useInView } from "framer-motion";
 
 const Industries = () => {
   const targetRef = useRef<any | null>(null);
-
   const isInView = useInView(targetRef, { once: true });
 
   const variants = {
-    initial: { filter: "blur(10px)" },
-    animate: { filter: "blur(0px)" },
+    initial: { filter: "blur(24px)", scale: 0 },
+    animate: { filter: "blur(0px)", scale: 1 },
   };
 
   return (
@@ -50,6 +49,7 @@ const Industries = () => {
               variants={variants}
               isInView={isInView}
               targetRef={targetRef}
+              index={i}
             />
           ))}
         </Box>

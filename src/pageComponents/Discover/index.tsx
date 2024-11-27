@@ -1,9 +1,19 @@
+"use client";
 import { Box, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import DiscoveryCard from "./card";
 import { discoveryCardType, disoverCardArray } from "./data";
+import { useInView } from "framer-motion";
 
 const Discover = () => {
+  const targetRef = useRef<any | null>(null);
+  const isInView = useInView(targetRef, { once: true });
+
+  const variants = {
+    initial: { filter: "blur(24px)", scale: 0 },
+    animate: { filter: "blur(0px)", scale: 1 },
+  };
+
   return (
     <>
       <Box
@@ -36,6 +46,10 @@ const Discover = () => {
               desc={item.desc}
               image={item.image}
               title={item.title}
+              variants={variants}
+              isInView={isInView}
+              targetRef={targetRef}
+              index={i}
             />
           ))}
         </Box>

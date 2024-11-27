@@ -9,6 +9,7 @@ interface IndustryCardProp {
   variants: any;
   isInView: boolean;
   targetRef: any;
+  index: number;
 }
 
 const IndustryCard = ({
@@ -16,6 +17,7 @@ const IndustryCard = ({
   variants,
   isInView,
   targetRef,
+  index,
 }: IndustryCardProp) => {
   return (
     <motion.div
@@ -28,7 +30,7 @@ const IndustryCard = ({
       }}
       animate={isInView ? "animate" : "initial"}
       initial="initial"
-      transition={{ duration: 0.15, ease: "easeInOut" }}
+      transition={{ duration: 0.2, delay: index * 0.1, ease: "easeInOut" }}
       variants={variants}
     >
       <Box
