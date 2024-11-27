@@ -29,19 +29,25 @@ const DiscoveryCard = ({
         ref={targetRef}
         animate={isInView ? "animate" : "initial"}
         initial="initial"
-        transition={{ duration: 0.2, delay: index * 0.1, ease: "easeInOut" }}
+        transition={{ duration: 0.3, delay: index * 0.2, ease: "easeInOut" }}
         variants={variants}
-        style={{ width: "33%", height: "100%" }}
+        style={{
+          width: "33%",
+          height: "100%",
+          minHeight: "100%",
+          maxHeight: "100%",
+        }}
       >
         <Box
           style={{
             height: "70vh",
+            minHeight: "70vh",
+            maxHeight: "70vh",
             backgroundColor: "white",
             borderRadius: "1rem",
             cursor: "pointer",
           }}
           width="full"
-          // width="1/3"
         >
           <Box
             style={{

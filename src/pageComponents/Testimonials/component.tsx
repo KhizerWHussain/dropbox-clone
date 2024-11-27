@@ -26,6 +26,7 @@ const Testimonial = ({ item, index }: Prop) => {
       animate={isInView ? "animate" : "initial"}
       initial="initial"
       transition={{ duration: 0.4, delay: index * 0.1, ease: "easeInOut" }}
+      style={{ cursor: "pointer" }}
     >
       <Box
         backgroundColor="#1C1D21"
@@ -34,25 +35,30 @@ const Testimonial = ({ item, index }: Prop) => {
         alignItems="center"
         style={{
           height: "40vh",
-          width: "60vw",
+          width: "47vw",
           borderRadius: "1rem",
         }}
       >
-        <Flex width="1/3" flexDir="column" padding="3" height="full">
-          <Avatar
-            src={item.pictureSource}
-            borderRadius={0}
-            style={{
-              height: "100%",
-              width: "100%",
-            }}
-          />
+        <Flex
+          width="2/5"
+          flexDir="column"
+          padding="3"
+          height="full"
+          position="relative"
+        >
+          <Avatar size="full" shape="rounded" src={item.pictureSource} />
           <FaPlayCircle
-            style={{ marginTop: "-1.5rem", marginRight: "-4rem", zIndex: 2 }}
+            size={20}
+            style={{
+              marginTop: "-1.5rem",
+              // marginRight: "-6rem",
+              zIndex: 10,
+              marginLeft: "0.5rem",
+            }}
           />
         </Flex>
         <Flex
-          width="2/3"
+          width="3/5"
           padding="3"
           height="full"
           flexDir="column"
@@ -69,12 +75,14 @@ const Testimonial = ({ item, index }: Prop) => {
             <Text color="#CD2F7B" style={{ fontSize: 12, fontWeight: 600 }}>
               Testimonial
             </Text>
-            <Text style={{ fontSize: 16, fontWeight: 700 }}>{item.title}</Text>
+            <Text style={{ fontSize: 18, fontWeight: 700, maxWidth: "80%" }}>
+              {item.title}
+            </Text>
             <Text style={{ fontSize: 14, opacity: 0.7 }}>{item.desc}</Text>
           </Box>
           <Link
             padding="2"
-            style={{ fontSize: 14, fontWeight: 700, color: "white" }}
+            style={{ fontSize: 16, fontWeight: 700, color: "white" }}
             textDecoration="underline"
           >
             {item.text}

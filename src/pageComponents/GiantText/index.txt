@@ -1,0 +1,164 @@
+
+// <Box
+//   style={{
+//     display: "flex",
+//     justifyItems: "center",
+//     alignItems: "center",
+//     height: "100%",
+//   }}
+//   maxW="3/5"
+// >
+//   <Text
+//     color="black"
+//     style={{
+//       fontSize: 40,
+//       fontWeight: 550,
+//       letterSpacing: 1,
+//     }}
+//   >
+//     With Dropbox, you can{" "}
+//     <span style={{ color: design.brownish }}>edit and sign</span> your
+//     documents,
+//     <span style={{ color: design.greenish }}> collaborate</span> on projects
+//     and <span style={{ color: design.purplish }}>search</span> across all
+//     your apps, and it happens in the same place you{" "}
+//     <span style={{ color: design.pinkish }}>securely store</span> all your
+//     content. It’s that simple :)
+//   </Text>
+// </Box>;
+
+
+
+// "use client";
+// import { Box } from "@chakra-ui/react";
+// import React, { useRef } from "react";
+// import { Colors } from "../../../constants";
+// import { useScroll, useTransform, motion } from "framer-motion";
+
+// const fullText: string =
+//   "With Dropbox, you can edit and sign your documents, collaborate on projects and search across all your apps, and it happens in the same place you securely store all your content. It’s that simple :)";
+
+// const GiantText = () => {
+//   const { design } = Colors;
+
+//   const colorMap: { [key: string]: string } = {
+//     "edit and sign": design.brownish,
+//     collaborate: design.greenish,
+//     search: design.purplish,
+//     "securely store": design.pinkish,
+//   };
+
+//   const targetElement = useRef<any>(null);
+
+//   const { scrollYProgress } = useScroll({
+//     target: targetElement,
+//     offset: ["start 0.9", "start 0.25"],
+//   });
+
+//   // const characters = fullText.split(" ");
+
+//   // Preprocess fullText to handle multi-word phrases
+//   const processedText = fullText.replace(
+//     /(edit and sign|securely store)/g,
+//     (match) => `###${match}###`
+//   );
+
+//   // Split text by spaces while keeping markers for special words intact
+//   const characters = processedText.split(" ");
+
+//   return (
+//     <Box
+//       style={{
+//         height: "120vh",
+//         width: "100vw",
+//         display: "flex",
+//         flexDirection: "column",
+//         justifyItems: "center",
+//         alignItems: "center",
+//         alignContent: "center",
+//         backgroundColor: Colors.back,
+//       }}
+//     >
+//       <Box
+//         style={{
+//           height: "100%",
+//           minHeight: "100%",
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyItems: "center",
+//           alignItems: "center",
+//         }}
+//       >
+//         <Box
+//           ref={targetElement}
+//           style={{
+//             display: "flex",
+//             flexWrap: "wrap",
+//             justifyItems: "center",
+//             alignItems: "center",
+//             lineHeight: 1.4,
+//           }}
+//           maxW="3/5"
+//         >
+//           {characters.map((item: string, i: number) => {
+//             // const start = i / characters.length;
+//             // const end = start + 1 / characters.length;
+
+//             // const wordColor = colorMap[item] || "black";
+//             // const isSpecialWord = colorMap[item]; // Check if the word is special and should have opacity
+
+//             // Clean up markers for rendering
+//             const cleanedItem = item.replace(/###/g, "");
+//             const wordColor = colorMap[cleanedItem] || "black";
+//             const isSpecialWord = colorMap[cleanedItem];
+
+//             const start = i / characters.length;
+//             const end = start + 1 / characters.length;
+
+//             return (
+//               <Span
+//                 key={`${i}.${item}`}
+//                 range={[start, end]}
+//                 progress={scrollYProgress}
+//                 wordColor={wordColor}
+//                 hasOpacity={isSpecialWord}
+//               >
+//                 {item}
+//               </Span>
+//             );
+//           })}
+//         </Box>
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default GiantText;
+
+// const Span = ({
+//   children,
+//   range,
+//   progress,
+//   wordColor,
+//   hasOpacity,
+//   setIsAnimating,
+// }: any) => {
+//   const opacity = useTransform(progress, range, [0.25, 1]);
+
+//   return (
+//     <motion.span
+//       style={{
+//         display: "inline-block",
+//         padding: 6,
+//         fontSize: 40,
+//         fontWeight: 550,
+//         letterSpacing: 1,
+//         color: wordColor,
+//         opacity: !hasOpacity ? opacity : 1,
+//       }}
+//       transition={{ duration: 1.5, ease: "easeInOut" }}
+//     >
+//       {children}
+//     </motion.span>
+//   );
+// };

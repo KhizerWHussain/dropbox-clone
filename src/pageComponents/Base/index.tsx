@@ -32,7 +32,7 @@ const Base = () => {
   return (
     <>
       <Header />
-      <Box ref={targetRef} position="relative">
+      <Box ref={targetRef} position="relative" color="white">
         <Box style={{ position: "sticky" }}>
           <AnimatePresence mode="sync">
             <motion.div

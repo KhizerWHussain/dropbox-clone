@@ -25,6 +25,7 @@ const Footer = () => {
           marginTop: "-2rem",
           gap: "4rem",
         }}
+        color="white"
       >
         <Box style={{ width: "80%" }}>
           <HStack

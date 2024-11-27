@@ -30,7 +30,7 @@ const IndustryCard = ({
       }}
       animate={isInView ? "animate" : "initial"}
       initial="initial"
-      transition={{ duration: 0.2, delay: index * 0.1, ease: "easeInOut" }}
+      transition={{ duration: 0.3, delay: index * 0.2, ease: "easeInOut" }}
       variants={variants}
     >
       <Box
@@ -51,15 +51,12 @@ const IndustryCard = ({
         >
           <Avatar
             src={item.image}
+            size="full"
+            shape="rounded"
             style={{
               height: "100%",
               width: "100%",
-              overflow: "hidden",
               objectFit: "contain",
-              borderTopLeftRadius: "1rem",
-              borderBottomLeftRadius: "1rem",
-              borderBottomRightRadius: 0,
-              borderTopRightRadius: 0,
             }}
           />
         </Flex>

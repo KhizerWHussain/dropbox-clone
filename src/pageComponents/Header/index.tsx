@@ -1,11 +1,12 @@
 "use client";
+import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbWorld } from "react-icons/tb";
 import { Colors } from "../../../constants";
 import { FaDropbox } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const headerOnLeftArray = [
   { id: 1, title: "Products", haveDropDown: true },
@@ -23,52 +24,55 @@ const headerOnRightArray = [
 
 const Header = () => {
   const router = useRouter();
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  const { scrollYProgress } = useScroll();
+
+  const framerPadding = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    ["1.7rem", "0.65rem"]
+  );
+
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    ["rgba(0, 0, 0, 1)", "rgba(0, 0, 0, 0.8)"]
+  );
+
+  const boxShadow = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    ["none", "0px 2px 5px rgba(0,0,0,0.2)"]
+  );
 
   const handleMainIconNavigation = () => {
     router.push("/", { scroll: true });
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window) {
-      const handleScroll = () => {
-        if (window.scrollY > 100) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
-
   return (
     <>
-      <Box
+      <motion.div
         style={{
           overflowX: "hidden",
           width: "100vw",
-          paddingTop: isScrolled ? "0.65rem" : "1.7rem",
-          paddingBottom: isScrolled ? "0.65rem" : "1.7rem",
+          paddingTop: framerPadding,
+          paddingBottom: framerPadding,
           paddingRight: "1.5rem",
           paddingLeft: "1.5rem",
-          backgroundColor: isScrolled
-            ? "rgba(0, 0, 0, 0.8)" // Reduced opacity on scroll
-            : "black", // Full opacity at the top
           display: "flex",
           gap: "1rem",
           alignItems: "center",
           alignContent: "center",
           justifyContent: "space-between",
           flex: 1,
-          boxShadow: isScrolled ? "0px 2px 5px rgba(0,0,0,0.2)" : "none",
+          boxShadow,
+          backgroundColor,
+          position: "fixed",
+          top: 0,
+          zIndex: 50,
+          color: "white",
         }}
-        // position="sticky"
-        position="fixed"
-        top={0}
-        zIndex="50"
-        transition="all 0.3s ease"
+        transition={{ duration: 0.15, delay: 0.05, ease: "easeOut" }}
       >
         <Box style={{ display: "flex", gap: "1.5rem" }}>
           <Box
@@ -190,7 +194,7 @@ const Header = () => {
             </Button>
           </Box>
         </Box>
-      </Box>
+      </motion.div>
     </>
   );
 };

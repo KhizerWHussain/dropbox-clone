@@ -57,7 +57,7 @@ const Discover = () => {
           fontSize={18}
           color="blue.600"
           fontWeight={400}
-          style={{ marginTop: "2.5rem" }}
+          style={{ marginTop: "2.5rem", cursor: "pointer" }}
         >
           View more resources
         </Text>
