@@ -54,8 +54,11 @@ const Security = () => {
   return (
     <>
       <Box
+        height={{
+          mdDown: "150vh",
+          lgTo2xl: "250vh",
+        }}
         style={{
-          height: "250vh",
           width: "100vw",
           display: "flex",
           flexDirection: "column",

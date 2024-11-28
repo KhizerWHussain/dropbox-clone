@@ -1,36 +1,41 @@
 "use client";
-import React from "react";
-import { Box, Button, Text } from "@chakra-ui/react";
-import { IoIosArrowDown } from "react-icons/io";
-import { TbWorld } from "react-icons/tb";
-import { Colors } from "../../../constants";
-import { FaDropbox } from "react-icons/fa6";
-import { useRouter } from "next/navigation";
+import React, { useRef, useState } from "react";
+import { Box, VStack } from "@chakra-ui/react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-const headerOnLeftArray = [
-  { id: 1, title: "Products", haveDropDown: true },
-  { id: 2, title: "Solutions", haveDropDown: true },
-  { id: 3, title: "Enterprise", haveDropDown: false },
-  { id: 4, title: "Pricing", haveDropDown: false },
-];
+import ProductDropDown from "./dropDowns/product";
+import SolutionDropDown from "./dropDowns/solution";
+import GetApp from "./dropDowns/getApp";
+import LeftSideHeader from "./left";
+import RightSideHeader from "./right";
+import { headerOnLeftArray, headerOnRightArray } from "./data";
 
-const headerOnRightArray = [
-  { id: 1, title: "Contact Sales", haveDropDown: false },
-  { id: 2, title: "Get app", haveDropDown: true },
-  { id: 3, title: "Sign up", haveDropDown: false },
-  { id: 4, title: "Log in", haveDropDown: false },
-];
+import {
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuTrigger,
+} from "@/components/ui/menu";
 
 const Header = () => {
-  const router = useRouter();
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const [dropdownPosition, setDropdownPosition] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
+
+  console.log("hoveredItem ==>", hoveredItem);
 
   const { scrollYProgress } = useScroll();
 
   const framerPadding = useTransform(
     scrollYProgress,
     [0, 0.1],
-    ["1.7rem", "0.65rem"]
+    ["1.7rem", "0.6rem"]
   );
 
   const backgroundColor = useTransform(
@@ -45,156 +50,120 @@ const Header = () => {
     ["none", "0px 2px 5px rgba(0,0,0,0.2)"]
   );
 
-  const handleMainIconNavigation = () => {
-    router.push("/", { scroll: true });
+  const handleMouseEnter = (title: string) => {
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+    }
+    setHoveredItem(title);
+  };
+
+  const handleMouseLeave = () => {
+    // setHoveredItem(null);
+
+    hoverTimeout.current = setTimeout(() => {
+      setHoveredItem(null);
+    }, 200); // Delay to avoid flickering
+  };
+
+  const loadDropDownComponent = () => {
+    switch (hoveredItem) {
+      case "Products":
+        return (
+          <ProductDropDown
+            onMouseEnter={() => handleMouseEnter(hoveredItem || "")}
+            onMouseLeave={handleMouseLeave}
+          />
+        );
+      case "Solutions":
+        return (
+          <SolutionDropDown
+            onMouseEnter={() => handleMouseEnter(hoveredItem || "")}
+            onMouseLeave={handleMouseLeave}
+          />
+        );
+      case "Get app":
+        return (
+          <GetApp
+            onMouseEnter={() => handleMouseEnter(hoveredItem || "")}
+            onMouseLeave={handleMouseLeave}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <>
-      <motion.div
+      {/* <MenuRoot> */}
+      <VStack
         style={{
-          overflowX: "hidden",
+          height: "100%",
           width: "100vw",
-          paddingTop: framerPadding,
-          paddingBottom: framerPadding,
-          paddingRight: "1.5rem",
-          paddingLeft: "1.5rem",
-          display: "flex",
-          gap: "1rem",
-          alignItems: "center",
-          alignContent: "center",
-          justifyContent: "space-between",
-          flex: 1,
-          boxShadow,
-          backgroundColor,
-          position: "fixed",
+          overflowX: "hidden",
           top: 0,
           zIndex: 50,
           color: "white",
+          position: "fixed",
+          gap: 0,
         }}
-        transition={{ duration: 0.15, delay: 0.05, ease: "easeOut" }}
       >
-        <Box style={{ display: "flex", gap: "1.5rem" }}>
-          <Box
-            style={{
-              display: "flex",
-              gap: "1rem",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-            onClick={handleMainIconNavigation}
-          >
-            <Box
-              style={{
-                backgroundColor: Colors.primary,
-                padding: 4,
-                height: 40,
-                width: 40,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <FaDropbox size={32} />
-            </Box>
-            <Text style={{ fontSize: 22, fontWeight: 700 }}>Dropbox</Text>
-          </Box>
-          <Box
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "1.5rem",
-              marginLeft: "1rem",
-            }}
-          >
-            {headerOnLeftArray.map((item: any, i: number) => (
-              <Box
-                key={`${i}.${item.id}`}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 2.5,
-                }}
-                _hover={{
-                  color: Colors.primary,
-                }}
-              >
-                <Text
-                  style={{
-                    fontWeight: 550,
-                    fontSize: 14,
-                    cursor: "pointer",
-                  }}
-                >
-                  {item.title}
-                </Text>
-                {item.haveDropDown ? <IoIosArrowDown /> : null}
-              </Box>
-            ))}
-          </Box>
+        <motion.div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            alignContent: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            paddingTop: framerPadding,
+            paddingBottom: framerPadding,
+            paddingRight: "1.5rem",
+            paddingLeft: "1.5rem",
+            boxShadow,
+            backgroundColor,
+
+            borderBottom:
+              hoveredItem !== null
+                ? "1px solid rgba(128, 128, 128, 0.25)"
+                : undefined,
+          }}
+          transition={{ duration: 0.15, delay: 0.05, ease: "easeOut" }}
+        >
+          <LeftSideHeader
+            handleMouseEnter={handleMouseEnter}
+            handleMouseLeave={handleMouseLeave}
+            headerOnLeftArray={headerOnLeftArray}
+          />
+          <RightSideHeader
+            handleMouseEnter={handleMouseEnter}
+            handleMouseLeave={handleMouseLeave}
+            headerOnRightArray={headerOnRightArray}
+          />
+        </motion.div>
+
+        <Box
+          style={{
+            backgroundColor: "black",
+            display: "flex",
+            width: "100vw",
+            height: "fit-content",
+          }}
+        >
+          {loadDropDownComponent()}
         </Box>
 
-        <Box style={{ display: "flex", gap: "1.5rem" }}>
-          <Box
+        {/* <MenuContent
+            position="fixed"
             style={{
+              backgroundColor: "black",
               display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "1.5rem",
-              marginLeft: "1rem",
+              width: "100vw",
             }}
           >
-            <Box>
-              <TbWorld
-                style={{
-                  fontSize: 18,
-                }}
-              />
-            </Box>
-            {headerOnRightArray.map((item: any, i: number) => (
-              <Box
-                key={`${i}.${item.id}`}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 2.5,
-                }}
-                _hover={{
-                  color: Colors.primary,
-                }}
-              >
-                <Text
-                  style={{
-                    fontWeight: 500,
-                    fontSize: 14,
-                    cursor: "pointer",
-                  }}
-                >
-                  {item.title}
-                </Text>
-                {item.haveDropDown ? <IoIosArrowDown /> : null}
-              </Box>
-            ))}
-          </Box>
-          <Box>
-            <Button
-              style={{
-                padding: 2,
-                width: 120,
-                fontWeight: 550,
-                fontSize: 16,
-                borderRadius: 10,
-              }}
-            >
-              Get started
-            </Button>
-          </Box>
-        </Box>
-      </motion.div>
+            {loadDropDownComponent()}
+          </MenuContent> */}
+      </VStack>
+      {/* </MenuRoot> */}
     </>
   );
 };

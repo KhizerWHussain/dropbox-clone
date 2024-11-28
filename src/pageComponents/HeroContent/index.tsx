@@ -19,6 +19,10 @@ interface HeroProp {
 const HeroContent = ({ scale, opacity }: HeroProp) => {
   return (
     <Box
+      height={{
+        mdDown: "60vh",
+        lgTo2xl: "80vh",
+      }}
       style={{
         width: "100vw",
         // height: opacity === 1 ? "fit-content" : "80vh",
@@ -30,13 +34,15 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
         // overflow: "hidden",
         // marginTop: "-2rem",
         // backgroundColor: opacity === 0 ? Colors.back : "transparent",
-        height: "80vh",
         backgroundColor: Colors.back,
       }}
     >
       <Box
+        display={{
+          mdDown: "none",
+          lgTo2xl: "flex",
+        }}
         style={{
-          display: "flex",
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
@@ -52,10 +58,11 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
         >
           <Video source={VideoLinks.heroContent1} />
         </motion.div>
+
         <Avatar
-          // src={DropboxDesktop.src}
+          shape="square"
+          size="full"
           src={DropboxDesktopWithoutBackground.src}
-          borderRadius={0}
           style={{
             height: "60vh",
             width: "60vw",
@@ -66,13 +73,13 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
         />
         <Avatar
           src={DropboxMobile.src}
-          borderRadius={0}
+          shape="square"
+          size="full"
           style={{
-            height: "50vh",
+            height: "40vh",
             width: "15vw",
-            objectFit: "contain",
             position: "absolute", // Position this avatar relative to the parent
-            top: "10%", // Adjust the vertical alignment
+            top: "15%", // Adjust the vertical alignment
             right: "20%", // Align to the middle-right side
           }}
         />
@@ -85,6 +92,23 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
           <Video source={VideoLinks.heroContent2} />
         </motion.div>
       </Box>
+
+      <Avatar
+        src={DropboxMobile.src}
+        display={{
+          mdDown: "block",
+          lgTo2xl: "none",
+        }}
+        shape="rounded"
+        size="xs"
+        marginTop={{
+          mdDown: "-16rem",
+        }}
+        style={{
+          height: "50vh",
+          width: "60%",
+        }}
+      />
     </Box>
   );
 };

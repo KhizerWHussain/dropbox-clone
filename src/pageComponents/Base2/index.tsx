@@ -84,6 +84,7 @@ const Base2 = () => {
       />
 
       <DocSend imageSource={documentImage} videoSource={documentVideo} />
+
       <ContentCollaboration
         color="#017891"
         btnIcon={<PiMonitorPlay />}

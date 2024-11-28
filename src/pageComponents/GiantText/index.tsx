@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Colors } from "../../../constants";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -17,7 +17,9 @@ const GiantText = () => {
     "securely store": design.pinkish,
   };
 
-  const targetElement = useRef<any>(null);
+  const targetElement = useRef<any | null>(null);
+
+  const [isAnimating, setIsAnimating] = useState<boolean>(true);
 
   const { scrollYProgress } = useScroll({
     target: targetElement,
@@ -52,10 +54,34 @@ const GiantText = () => {
     }
   }
 
+  // for immediately going to center of screen and stop scrolling
+  // useEffect(() => {
+  //   const element = targetElement.current;
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth", block: "center" });
+  //   }
+
+  //   // Lock scrolling
+  //   const lockScroll = (e: Event) => {
+  //     if (isAnimating) {
+  //       e.preventDefault();
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", lockScroll, { passive: false });
+  //   return () => {
+  //     window.removeEventListener("scroll", lockScroll);
+  //   };
+  // }, [isAnimating]);
+
   return (
     <Box
+      height={{
+        mdDown: "60vh",
+        lg: "100vh",
+        xlTo2xl: "120vh",
+      }}
       style={{
-        height: "120vh",
         width: "100vw",
         display: "flex",
         flexDirection: "column",
@@ -76,7 +102,6 @@ const GiantText = () => {
         }}
       >
         <Box
-          // ref={targetElement}
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -85,7 +110,7 @@ const GiantText = () => {
             height: "100%",
             lineHeight: 1.25,
           }}
-          maxW="3/5"
+          maxW={{ mdDown: "full", lgTo2xl: "3/5" }}
         >
           <Box ref={targetElement}>
             {processedText.map((item, i) => {
@@ -99,6 +124,7 @@ const GiantText = () => {
                   progress={scrollYProgress}
                   wordColor={item.color || "black"}
                   hasOpacity={!!item.color}
+                  onAnimationComplete={() => setIsAnimating(false)}
                 >
                   {item.text}
                 </Span>
@@ -113,23 +139,49 @@ const GiantText = () => {
 
 export default GiantText;
 
-const Span = ({ children, range, progress, wordColor, hasOpacity }: any) => {
+const Span = ({
+  children,
+  range,
+  progress,
+  wordColor,
+  hasOpacity,
+  onAnimationComplete,
+}: any) => {
   const opacity = useTransform(progress, range, [0.25, 1]);
 
   return (
     <motion.span
       style={{
         display: "inline-block",
-        padding: 6,
         fontSize: 40,
         fontWeight: 550,
-        letterSpacing: 1,
         color: wordColor,
         opacity: hasOpacity ? 1 : opacity,
       }}
       transition={{ duration: 0.25, delay: 0.1, ease: "easeInOut" }}
+      // when framer-motion animations ends
+      onAnimationComplete={onAnimationComplete}
     >
-      {children}
+      <Text
+        fontSize={{
+          mdDown: 12,
+          lg: 32,
+          xlTo2xl: 40,
+        }}
+        padding={{
+          mdDown: 2,
+          lgTo2xl: 2,
+        }}
+        letterSpacing={{
+          mdDown: 0,
+          lgTo2xl: 1,
+        }}
+        lineHeight={{
+          mdDown: 0,
+        }}
+      >
+        {children}
+      </Text>
     </motion.span>
   );
 };

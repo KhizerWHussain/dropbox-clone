@@ -12,9 +12,12 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
   return (
     <>
       <Box
+        height={{
+          mdDown: "40vh",
+          lgTo2xl: "100vh",
+        }}
         style={{
           widows: "100vw",
-          height: "100vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -50,11 +53,18 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
               right="40%"
             />
           </Box>
-          <Box style={{ height: "90vh", width: "50%", zIndex: 0 }}>
+          <Box
+            display={{
+              mdDown: "none",
+              lgTo2xl: "block",
+            }}
+            style={{ height: "90vh", width: "50%", zIndex: 0 }}
+          >
             <Avatar
               src={imageSource}
-              borderRadius={0}
               objectFit="contain"
+              shape="rounded"
+              size="full"
               style={{ height: "100%", width: "100%" }}
             />
           </Box>

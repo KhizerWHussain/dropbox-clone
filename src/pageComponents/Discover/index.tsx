@@ -29,10 +29,21 @@ const Discover = () => {
         }}
         backgroundColor="#F7F5F2"
       >
-        <Text fontSize={36}>Discover, learn, thrive with Dropbox</Text>
+        <Text
+          fontSize={{
+            mdDown: 18,
+            lgTo2xl: 36,
+          }}
+        >
+          Discover, learn, thrive with Dropbox
+        </Text>
         <Box
+          width={{ mdDown: "90%", lgTo2xl: "70%" }}
+          overflowX={{
+            mdDown: "auto",
+            lgTo2xl: "hidden",
+          }}
           style={{
-            width: "70%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -54,7 +65,10 @@ const Discover = () => {
           ))}
         </Box>
         <Text
-          fontSize={18}
+          fontSize={{
+            mdDown: 10,
+            lgTo2xl: 18,
+          }}
           color="blue.600"
           fontWeight={400}
           style={{ marginTop: "2.5rem", cursor: "pointer" }}

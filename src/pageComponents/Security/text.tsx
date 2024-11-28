@@ -15,12 +15,22 @@ const SecurityText = () => {
       }}
     >
       <BiLock size={48} />
-      <Text style={{ fontSize: 30, fontWeight: 550 }}>
+      <Text
+        fontSize={{
+          mdDown: 16,
+          lgTo2xl: 30,
+        }}
+        style={{ fontWeight: 550 }}
+      >
         Security never comes second
       </Text>
       <Text
         maxW="5/6"
-        style={{ fontSize: 16, textAlign: "center", opacity: 0.7 }}
+        fontSize={{
+          mdDown: 10,
+          lgTo2xl: 16,
+        }}
+        style={{ textAlign: "center", opacity: 0.7 }}
       >
         From industry-leading encryption and tamper-proof documents to version
         history and recovery, Dropbox keeps your intellectual property safe and
@@ -32,28 +42,38 @@ const SecurityText = () => {
           alignItems: "center",
           justifyContent: "center",
         }}
-        gap="10"
         marginTop="4"
         textAlign="center"
         minWidth="3/4"
         maxWidth="3/4"
+        gap={{
+          mdDown: "4",
+          lgTo2xl: "10",
+        }}
+        flexDirection={{
+          mdDown: "column",
+          lgTo2xl: "flex",
+        }}
       >
         <Box
+          paddingTop={{ mdDown: "0.25rem", lgTo2xl: "0.8rem" }}
+          paddingBottom={{ mdDown: "0.25rem", lgTo2xl: "0.8rem" }}
+          paddingRight={{ mdDown: "0.5rem", lgTo2xl: "1.75rem" }}
+          paddingLeft={{ mdDown: "0.5rem", lgTo2xl: "1.75rem" }}
+          borderRadius={{ mdDown: "0.5rem", lgTo2xl: "1rem" }}
           style={{
             display: "flex",
-            borderRadius: "1rem",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "0.8rem",
-            paddingBottom: "0.8rem",
-            paddingRight: "1.75rem",
-            paddingLeft: "1.75rem",
             border: "2px solid white",
           }}
         >
           <Box
+            fontSize={{
+              mdDown: 10,
+              lgTo2xl: 16,
+            }}
             style={{
-              fontSize: 16,
               fontWeight: 600,
               color: "white",
             }}

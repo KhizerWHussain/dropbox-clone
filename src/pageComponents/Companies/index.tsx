@@ -22,8 +22,17 @@ const Companies = () => {
           alignItems: "center",
           justifyContent: "center",
         }}
+        zIndex={50}
       >
-        <Text opacity={0.7}>Trusted by the biggest companies in the world</Text>
+        <Text
+          fontSize={{
+            mdDown: 10,
+            lgTo2xl: 16,
+          }}
+          opacity={0.7}
+        >
+          Trusted by the biggest companies in the world
+        </Text>
 
         <Marquee
           pauseOnHover={true}
@@ -43,8 +52,9 @@ const Companies = () => {
           {companiesPng.map((item: any) => (
             <Box
               key={item.id}
-              style={{
-                width: "20vw",
+              width={{
+                mdDown: "15vw",
+                lgTo2xl: "20vw",
               }}
             >
               <Image
@@ -62,6 +72,7 @@ const Companies = () => {
         </Marquee>
 
         <Box
+          zIndex={50}
           onClick={() => setStartSlider((prev) => !prev)}
           style={{ marginTop: "1rem", cursor: "pointer" }}
         >

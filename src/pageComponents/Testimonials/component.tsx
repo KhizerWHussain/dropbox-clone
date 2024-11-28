@@ -31,18 +31,31 @@ const Testimonial = ({ item, index }: Prop) => {
       <Box
         backgroundColor="#1C1D21"
         display="flex"
+        flexDir={{
+          mdDown: "column",
+          lgTo2xl: "row",
+        }}
         justifyContent="center"
         alignItems="center"
+        width={{
+          mdDown: "40vw",
+          lgTo2xl: "47vw",
+        }}
         style={{
           height: "40vh",
-          width: "47vw",
           borderRadius: "1rem",
         }}
       >
         <Flex
-          width="2/5"
+          width={{
+            mdDown: "full",
+            lgTo2xl: "2/5",
+          }}
           flexDir="column"
-          padding="3"
+          padding={{
+            mdDown: "1",
+            lgTo2xl: "3",
+          }}
           height="full"
           position="relative"
         >
@@ -51,14 +64,16 @@ const Testimonial = ({ item, index }: Prop) => {
             size={20}
             style={{
               marginTop: "-1.5rem",
-              // marginRight: "-6rem",
               zIndex: 10,
               marginLeft: "0.5rem",
             }}
           />
         </Flex>
         <Flex
-          width="3/5"
+          width={{
+            mdDown: "full",
+            lgTo2xl: "3/5",
+          }}
           padding="3"
           height="full"
           flexDir="column"
@@ -72,17 +87,37 @@ const Testimonial = ({ item, index }: Prop) => {
             }}
             padding="2"
           >
-            <Text color="#CD2F7B" style={{ fontSize: 12, fontWeight: 600 }}>
+            <Text
+              fontSize={{ mdDown: 8, lgTo2xl: 12 }}
+              color="#CD2F7B"
+              style={{ fontWeight: 600 }}
+            >
               Testimonial
             </Text>
-            <Text style={{ fontSize: 18, fontWeight: 700, maxWidth: "80%" }}>
+            <Text
+              maxWidth={{
+                mdDown: "full",
+                lgTo2xl: "80%",
+              }}
+              fontSize={{ mdDown: 12, lgTo2xl: 18 }}
+              style={{ fontWeight: 700 }}
+            >
               {item.title}
             </Text>
-            <Text style={{ fontSize: 14, opacity: 0.7 }}>{item.desc}</Text>
+            <Text
+              fontSize={{
+                mdDown: 10,
+                lgTo2xl: 14,
+              }}
+              style={{ opacity: 0.7 }}
+            >
+              {item.desc}
+            </Text>
           </Box>
           <Link
+            fontSize={{ mdDown: 10, lgTo2xl: 16 }}
             padding="2"
-            style={{ fontSize: 16, fontWeight: 700, color: "white" }}
+            style={{ fontWeight: 700, color: "white" }}
             textDecoration="underline"
           >
             {item.text}

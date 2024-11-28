@@ -20,7 +20,7 @@ const settings: Settings = {
     {
       breakpoint: 768, // Mobile breakpoint
       settings: {
-        slidesToShow: 1, // Show 1 slide on smaller screens
+        slidesToShow: 1.5, // Show 1 slide on smaller screens
         slidesToScroll: 1,
       },
     },

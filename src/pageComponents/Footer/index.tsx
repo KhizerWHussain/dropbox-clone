@@ -27,9 +27,10 @@ const Footer = () => {
         }}
         color="white"
       >
-        <Box style={{ width: "80%" }}>
+        <Box width={{ mdDown: "full", lgTo2xl: "80%" }}>
           <HStack
             width="full"
+            flexWrap={{ mdDown: "wrap", lgTo2xl: "nowrap" }}
             style={{ justifyContent: "space-between", alignItems: "start" }}
           >
             {footerContentArray.map((item: footerContentType, i: number) => (
@@ -37,12 +38,13 @@ const Footer = () => {
                 key={`${item.id}.${i}`}
                 justifyContent="start"
                 alignItems="start"
+                width={{ mdDown: "1/12", lgTo2xl: "full" }}
               >
                 <Text
                   as="h2"
+                  fontSize={{ mdDown: 10, lgTo2xl: 20 }}
                   style={{
                     marginBottom: "1rem",
-                    fontSize: 20,
                     fontWeight: 600,
                   }}
                 >
@@ -53,7 +55,10 @@ const Footer = () => {
                     <Text
                       as="p"
                       maxWidth="40"
-                      fontSize={16}
+                      fontSize={{
+                        mdDown: 8,
+                        lgTo2xl: 14,
+                      }}
                       fontWeight={300}
                       key={contentIndex}
                       textAlign="start"
@@ -90,7 +95,9 @@ const Footer = () => {
           />
           <HStack style={{ marginTop: "1rem" }}>
             <IoIosGlobe size={22} />
-            <Text>English (United States)</Text>
+            <Text fontSize={{ mdDown: 12, lgTo2xl: 16 }}>
+              English (United States)
+            </Text>
             <MdOutlineKeyboardArrowRight
               size={32}
               fontWeight={200}

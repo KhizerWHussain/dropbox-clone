@@ -1,6 +1,5 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -75,14 +74,28 @@ const DiscoveryCard = ({
               <Text fontSize={12} fontWeight={600} color="darkgray">
                 Article
               </Text>
-              <Text fontSize={18} fontWeight={550}>
+              <Text
+                fontSize={{
+                  mdDown: 12,
+                  lgTo2xl: 18,
+                }}
+                fontWeight={550}
+              >
                 {title}
               </Text>
-              <Text fontSize={14} fontWeight={400} opacity={0.8}>
+              <Text
+                fontSize={{ mdDown: 8, lgTo2xl: 14 }}
+                fontWeight={400}
+                opacity={0.8}
+              >
                 {desc}
               </Text>
             </Flex>
             <Link
+              fontSize={{
+                mdDown: 8,
+                lgTo2xl: 14,
+              }}
               href=""
               style={{
                 padding: "1rem",

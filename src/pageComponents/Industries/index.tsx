@@ -29,7 +29,14 @@ const Industries = () => {
           marginTop: "4rem",
         }}
       >
-        <Text color="black" style={{ fontSize: 32, fontWeight: 500 }}>
+        <Text
+          fontSize={{
+            mdDown: 16,
+            lgTo2xl: 32,
+          }}
+          color="black"
+          style={{ fontWeight: 500 }}
+        >
           Dropbox empowers across industries
         </Text>
         <Box

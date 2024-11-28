@@ -35,15 +35,21 @@ const IndustryCard = ({
     >
       <Box
         backgroundColor="#F7F5F2"
+        borderRadius="1rem"
         display="flex"
         justifyContent="center"
         alignItems="center"
         style={{
           height: "100%",
         }}
+        // width={{ mdDown: "100%", lgTo2xl: "40%" }}
         color="black"
       >
         <Flex
+          display={{
+            mdDown: "none",
+            lgTo2xl: "flex",
+          }}
           width="1/3"
           flexDir="column"
           height="full"
@@ -61,7 +67,10 @@ const IndustryCard = ({
           />
         </Flex>
         <Flex
-          width="2/3"
+          width={{
+            mdDown: "full",
+            lgTo2xl: "2/3",
+          }}
           padding="3"
           height="full"
           flexDir="column"
@@ -75,12 +84,23 @@ const IndustryCard = ({
             }}
             padding="2"
           >
-            <Text style={{ fontSize: 18, fontWeight: 550 }}>{item.title}</Text>
-            <Text style={{ fontSize: 14, opacity: 0.7 }}>{item.desc}</Text>
+            <Text
+              fontSize={{ mdDown: 14, lgTo2xl: 18 }}
+              style={{ fontWeight: 550 }}
+            >
+              {item.title}
+            </Text>
+            <Text
+              fontSize={{ mdDown: 10, lgTo2xl: 14 }}
+              style={{ opacity: 0.7 }}
+            >
+              {item.desc}
+            </Text>
           </Box>
           <Link
+            fontSize={{ mdDown: 10, lgTo2xl: 14 }}
             padding="2"
-            style={{ fontSize: 14, fontWeight: 700, color: "black" }}
+            style={{ fontWeight: 700, color: "black" }}
             textDecoration="underline"
           >
             Learn More

@@ -1,4 +1,3 @@
-"use client";
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { Colors } from "../../../constants";
@@ -13,9 +12,14 @@ interface HeroProp {
 const Hero = ({ scale }: HeroProp) => {
   return (
     <Box
+      height={{
+        mdDown: "50vh",
+        lg: "100vh",
+        xl: "90vh",
+        "2xl": "90vh",
+      }}
       style={{
         width: "100vw",
-        height: "90vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -38,17 +42,25 @@ const Hero = ({ scale }: HeroProp) => {
         }}
       >
         <Box
+          maxWidth={{
+            lgDown: "full",
+            xl: "2/3",
+            "2xl": "2/3",
+          }}
           display={"flex"}
           flexDirection={"column"}
           gap={4}
           textAlign="center"
-          maxWidth="2/3"
           alignItems="center"
         >
           <Text
+            fontSize={{
+              lgTo2xl: 52,
+              md: 32,
+              mdDown: 20,
+            }}
             style={{
               fontWeight: 700,
-              fontSize: 52,
               textWrap: "wrap",
               wordSpacing: "0.15rem",
             }}
@@ -56,10 +68,14 @@ const Hero = ({ scale }: HeroProp) => {
             Get to work, with a lot less work
           </Text>
           <Text
+            fontSize={{
+              lgTo2xl: 22,
+              md: 14,
+              mdDown: 10,
+            }}
             opacity={0.7}
             style={{
               fontWeight: 500,
-              fontSize: 22,
             }}
             maxWidth="3/4"
             minWidth="3/4"
@@ -79,28 +95,30 @@ const Hero = ({ scale }: HeroProp) => {
             marginTop="6"
           >
             <Box
+              paddingBottom={{ mdDown: "0.5rem", lgTo2xl: "1.3rem" }}
+              paddingTop={{ mdDown: "0.5rem", lgTo2xl: "1.3rem" }}
+              paddingRight={{ mdDown: "0.75rem", lgTo2xl: "1.8rem" }}
+              paddingLeft={{ mdDown: "0.75rem", lgTo2xl: "1.8rem" }}
               display="flex"
               style={{
                 borderRadius: "1rem",
                 justifyContent: "center",
-                alignItems: "center",
-                paddingTop: "1.3rem",
-                paddingBottom: "1.3rem",
-                paddingRight: "1.8rem",
-                paddingLeft: "1.8rem",
                 backgroundColor: Colors.primary,
               }}
             >
-              <Box
+              <Text
+                fontSize={{
+                  mdDown: 10,
+                  lgTo2xl: 16,
+                }}
                 style={{
-                  fontSize: 16,
                   fontWeight: 600,
                   color: "black",
                   backgroundColor: Colors.primary,
                 }}
               >
-                Sign up free
-              </Box>
+                Sign up for free
+              </Text>
               <FaArrowRight
                 color="black"
                 arabicForm="isolated"
@@ -112,17 +130,23 @@ const Hero = ({ scale }: HeroProp) => {
               />
             </Box>
             <Box
+              display={{
+                mdDown: "none",
+                lgTo2xl: "flex",
+              }}
               style={{
-                display: "flex",
                 justifyContent: "center",
                 alignContent: "center",
                 alignItems: "center",
               }}
             >
               <Text
+                fontSize={{
+                  mdDown: 12,
+                  lgTo2xl: 16,
+                }}
                 style={{
                   textDecoration: "underline",
-                  fontSize: 16,
                   fontWeight: 600,
                   textUnderlineOffset: "2px",
                   textDecorationThickness: "1px",
@@ -135,7 +159,6 @@ const Hero = ({ scale }: HeroProp) => {
                 arabicForm="isolated"
                 overlineThickness={10}
                 style={{
-                  fontWeight: 200,
                   marginLeft: "0.5rem",
                 }}
               />
@@ -153,8 +176,11 @@ const Hero = ({ scale }: HeroProp) => {
             }}
           >
             <Text
+              fontSize={{
+                mdDown: 6,
+                lgTo2xl: 12,
+              }}
               style={{
-                fontSize: 12,
                 fontWeight: 400,
                 color: "white",
                 width: "50%",
@@ -171,6 +197,40 @@ const Hero = ({ scale }: HeroProp) => {
                 alignContent: "center",
                 alignItems: "center",
                 width: "50%",
+              }}
+            />
+          </Box>
+          <Box
+            display={{
+              mdDown: "flex",
+              lgTo2xl: "none",
+            }}
+            style={{
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              fontSize={{
+                mdDown: 10,
+                lgTo2xl: 16,
+              }}
+              style={{
+                textDecoration: "underline",
+                fontWeight: 600,
+                textUnderlineOffset: "2px",
+                textDecorationThickness: "1px",
+              }}
+            >
+              Find your plan
+            </Text>
+            <FaArrowRight
+              color="white"
+              arabicForm="isolated"
+              overlineThickness={10}
+              style={{
+                marginLeft: "0.5rem",
               }}
             />
           </Box>

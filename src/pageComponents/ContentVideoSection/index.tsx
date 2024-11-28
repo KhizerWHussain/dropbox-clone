@@ -11,22 +11,33 @@ const ContentVideoSection = () => {
   return (
     <>
       <Box
+        height={{
+          mdDown: "50vh",
+          lgTo2xl: "100vh",
+        }}
         style={{
           width: "100vw",
-          height: "100vh",
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
         }}
       >
         <Box maxW="4/5" position="relative">
-          <Box width="2/3">
+          <Box
+            width="2/3"
+            display={{
+              mdDown: "none",
+            }}
+          >
             <Video source={bottleVideoSoruce} />
           </Box>
           <Box
+            position={{
+              mdDown: "initial",
+              lgTo2xl: "absolute",
+            }}
             width="1/3"
             style={{
-              position: "absolute",
               top: "15%",
               right: "20%",
               height: "70%",
