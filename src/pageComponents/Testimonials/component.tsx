@@ -38,11 +38,11 @@ const Testimonial = ({ item, index }: Prop) => {
         justifyContent="center"
         alignItems="center"
         width={{
-          mdDown: "40vw",
+          mdDown: "50vw",
           lgTo2xl: "47vw",
         }}
+        height={{ mdDown: "60vh", lgTo2xl: "40vh" }}
         style={{
-          height: "40vh",
           borderRadius: "1rem",
         }}
       >
@@ -88,7 +88,7 @@ const Testimonial = ({ item, index }: Prop) => {
             padding="2"
           >
             <Text
-              fontSize={{ mdDown: 8, lgTo2xl: 12 }}
+              fontSize={{ mdDown: 12, lgTo2xl: 12 }}
               color="#CD2F7B"
               style={{ fontWeight: 600 }}
             >
@@ -99,26 +99,27 @@ const Testimonial = ({ item, index }: Prop) => {
                 mdDown: "full",
                 lgTo2xl: "80%",
               }}
-              fontSize={{ mdDown: 12, lgTo2xl: 18 }}
+              fontSize={{ mdDown: 14, lgTo2xl: 18 }}
               style={{ fontWeight: 700 }}
             >
               {item.title}
             </Text>
             <Text
               fontSize={{
-                mdDown: 10,
+                mdDown: 12,
                 lgTo2xl: 14,
               }}
-              style={{ opacity: 0.7 }}
+              opacity={{ mdDown: 0.5, lgTo2xl: 0.7 }}
             >
               {item.desc}
             </Text>
           </Box>
           <Link
-            fontSize={{ mdDown: 10, lgTo2xl: 16 }}
+            fontSize={{ mdDown: 14, lgTo2xl: 16 }}
             padding="2"
             style={{ fontWeight: 700, color: "white" }}
             textDecoration="underline"
+            textUnderlineOffset="2px"
           >
             {item.text}
           </Link>

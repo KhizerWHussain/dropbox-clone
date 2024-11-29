@@ -53,14 +53,15 @@ const Security = () => {
 
   return (
     <>
+      {/* web */}
       <Box
+        display={{ mdDown: "none", lgTo2xl: "flex" }}
         height={{
-          mdDown: "150vh",
+          mdDown: "200vh",
           lgTo2xl: "250vh",
         }}
         style={{
           width: "100vw",
-          display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
@@ -90,6 +91,29 @@ const Security = () => {
           <Testimonials />
           <Companies />
         </motion.div>
+      </Box>
+      {/* mobile */}
+
+      <Box
+        display={{ mdDown: "flex", lgTo2xl: "none" }}
+        height={{
+          mdDown: "200vh",
+          lgTo2xl: "250vh",
+        }}
+        style={{
+          width: "100vw",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          background: "linear-gradient(to bottom, #282B2F, #000000)",
+          alignContent: "center",
+        }}
+      >
+        <SecurityText />
+        <SecurityImages />
+        <Testimonials />
+        <Companies />
       </Box>
     </>
   );

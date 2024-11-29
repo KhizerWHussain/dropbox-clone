@@ -20,18 +20,42 @@ const SecurityImages = () => {
 
   return (
     <Box
+      height={{ mdDown: "50vh", lgTo2xl: "80vh" }}
       style={{
-        height: "80vh",
         width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         marginTop: "6rem",
       }}
-      maxWidth="60vw"
-      minWidth="60vw"
+      maxWidth={{ mdDown: "90%", lgTo2xl: "60vw" }}
+      minWidth={{ mdDown: "90%", lgTo2xl: "60vw" }}
     >
+      {/* mobile */}
+      <Box display={{ mdDown: "flex", lgTo2xl: "none" }}>
+        <motion.div
+          ref={targetRef}
+          animate={isInView ? "animate" : "initial"}
+          initial="initial"
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          variants={variants}
+        >
+          <Image
+            src={Security4}
+            alt="fourth"
+            width={100}
+            height={100}
+            style={{
+              width: "100vw",
+              objectFit: "contain",
+            }}
+          />
+        </motion.div>
+      </Box>
+
+      {/* web  */}
       <Flex
+        display={{ mdDown: "none" }}
         justifyContent="center" // Center all items
         alignItems="center" // Align items in the center vertically
         style={{

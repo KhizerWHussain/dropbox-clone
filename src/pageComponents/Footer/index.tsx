@@ -3,7 +3,6 @@ import React from "react";
 import { footerContentArray, footerContentType } from "./data";
 import { IoIosGlobe } from "react-icons/io";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
@@ -12,8 +11,8 @@ const Footer = () => {
   return (
     <>
       <Box
+        height={{ mdDown: "160vh", lgTo2xl: "120vh" }}
         style={{
-          height: "120vh",
           width: "100vw",
           maxWidth: "100vw",
           overflowX: "hidden",
@@ -27,22 +26,24 @@ const Footer = () => {
         }}
         color="white"
       >
-        <Box width={{ mdDown: "full", lgTo2xl: "80%" }}>
+        <Box zIndex={50} width={{ mdDown: "90%", lgTo2xl: "80%" }}>
           <HStack
             width="full"
+            justifyContent={{ mdDown: "center", lgTo2xl: "space-between" }}
             flexWrap={{ mdDown: "wrap", lgTo2xl: "nowrap" }}
-            style={{ justifyContent: "space-between", alignItems: "start" }}
+            style={{ alignItems: "start" }}
+            gap={{ mdDown: "3rem", lgTo2xl: 0 }}
           >
             {footerContentArray.map((item: footerContentType, i: number) => (
               <VStack
                 key={`${item.id}.${i}`}
                 justifyContent="start"
                 alignItems="start"
-                width={{ mdDown: "1/12", lgTo2xl: "full" }}
+                width={{ mdDown: "40%", lgTo2xl: "full" }}
               >
                 <Text
                   as="h2"
-                  fontSize={{ mdDown: 10, lgTo2xl: 20 }}
+                  fontSize={{ mdDown: 16, lgTo2xl: 20 }}
                   style={{
                     marginBottom: "1rem",
                     fontWeight: 600,
@@ -55,10 +56,7 @@ const Footer = () => {
                     <Text
                       as="p"
                       maxWidth="40"
-                      fontSize={{
-                        mdDown: 8,
-                        lgTo2xl: 14,
-                      }}
+                      fontSize={14}
                       fontWeight={300}
                       key={contentIndex}
                       textAlign="start"

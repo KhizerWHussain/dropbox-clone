@@ -13,7 +13,7 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
     <>
       <Box
         height={{
-          mdDown: "40vh",
+          mdDown: "45vh",
           lgTo2xl: "100vh",
         }}
         style={{
@@ -22,23 +22,35 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
           justifyContent: "center",
           alignItems: "center",
         }}
+        // flexDir={{ mdDown: "column" }}
       >
+        <Box display={{ lgTo2xl: "none" }}>
+          <Video
+            source={videoSource}
+            playerHeight="50%"
+            playerWidth="80%"
+            boxShadow="0px 0px 48px 10px rgba(0,0,0,0.2)"
+          />
+        </Box>
+
         <Box
+          display={{ mdDown: "none", lgTo2xl: "flex" }}
           maxW="11/12"
           position="relative"
           style={{
-            display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Box
+            display={{ mdDown: "none", lgTo2xl: "flex" }}
             style={{
               height: "40vh",
               width: "40vw",
             }}
           />
           <Box
+            display={{ mdDown: "none" }}
             style={{
               zIndex: 1,
             }}

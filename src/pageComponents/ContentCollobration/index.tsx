@@ -22,7 +22,7 @@ const ContentCollaboration = ({
     <>
       <Box
         height={{
-          mdDown: "40vh",
+          mdDown: "45vh",
           lgTo2xl: "90vh",
         }}
         style={{
@@ -44,15 +44,18 @@ const ContentCollaboration = ({
             flexDirection: "column",
             gap: "1rem",
           }}
-          maxWidth="3/5"
+          maxWidth={{
+            mdDown: "90%",
+            lgTo2xl: "3/5",
+          }}
         >
           <Button
-            padding={{ mdDown: "0", lgTo2xl: "1rem" }}
+            padding={{ mdDown: "0.35rem", lgTo2xl: "1rem" }}
             borderRadius={{ mdDown: "full", lgTo2xl: "1rem" }}
+            minWidth={{ mdDown: "25vw", lgTo2xl: "13vw" }}
             style={{
               backgroundColor: color,
               color: "white",
-              minWidth: "13vw",
               height: "4vh",
               display: "flex",
               justifyContent: "center",
@@ -61,11 +64,11 @@ const ContentCollaboration = ({
             }}
           >
             {btnIcon}
-            <Text fontSize={{ mdDown: 10, lgTo2xl: 14 }}>{btnText}</Text>
+            <Text fontSize={{ mdDown: 14, lgTo2xl: 14 }}>{btnText}</Text>
           </Button>
           <Text
             fontSize={{
-              mdDown: 16,
+              mdDown: 28,
               lgTo2xl: 30,
             }}
             style={{ fontWeight: 550 }}
@@ -75,7 +78,7 @@ const ContentCollaboration = ({
           <Text
             maxW="5/6"
             fontSize={{
-              mdDown: 10,
+              mdDown: 16,
               lgTo2xl: 16,
             }}
             style={{ color: "#7A746B", textAlign: "center" }}
@@ -102,13 +105,13 @@ const ContentCollaboration = ({
             maxWidth="3/4"
           >
             <Box
-              paddingTop={{ mdDown: "0.5rem", lgTo2xl: "0.8rem" }}
-              paddingBottom={{ mdDown: "0.5rem", lgTo2xl: "0.8rem" }}
-              paddingRight={{ mdDown: "0.75rem", lgTo2xl: "1.75rem" }}
-              paddingLeft={{ mdDown: "0.75rem", lgTo2xl: "1.75rem" }}
-              borderRadius={{ mdDown: "0.5rem", lgTo2xl: "1rem" }}
+              paddingTop={{ mdDown: "1rem", lgTo2xl: "0.8rem" }}
+              paddingBottom={{ mdDown: "1rem", lgTo2xl: "0.8rem" }}
+              paddingRight={{ mdDown: "2rem", lgTo2xl: "1.75rem" }}
+              paddingLeft={{ mdDown: "2rem", lgTo2xl: "1.75rem" }}
+              borderRadius={{ mdDown: "1rem", lgTo2xl: "1rem" }}
               border={{
-                mdDown: "1px solid black",
+                mdDown: "1.5px solid black",
                 lgTo2xl: "2px solid black",
               }}
               style={{
@@ -119,12 +122,15 @@ const ContentCollaboration = ({
             >
               <Box
                 fontSize={{
-                  mdDown: 10,
+                  mdDown: 18,
                   lgTo2xl: 16,
                 }}
                 style={{
-                  fontWeight: 600,
                   color: "black",
+                }}
+                fontWeight={{
+                  mdDown: 550,
+                  lgTo2xl: 600,
                 }}
               >
                 Get started free
@@ -148,15 +154,15 @@ const ContentCollaboration = ({
             >
               <Text
                 fontSize={{
-                  mdDown: 10,
+                  mdDown: 16,
                   lgTo2xl: 16,
                 }}
                 style={{
                   textDecoration: "underline",
                   fontWeight: 600,
-                  textUnderlineOffset: "2px",
-                  textDecorationThickness: "1px",
                 }}
+                textUnderlineOffset={{ mdDown: "4px", lgTo2xl: "2px" }}
+                textDecorationThickness={{ mdDown: "0.5px", lgTo2xl: "1px" }}
               >
                 Learn more
               </Text>

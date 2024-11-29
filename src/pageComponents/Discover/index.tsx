@@ -17,9 +17,9 @@ const Discover = () => {
   return (
     <>
       <Box
+        height={{ mdDown: "120vh", lgTo2xl: "150vh" }}
         style={{
           width: "100vw",
-          height: "150vh",
           color: "black",
           display: "flex",
           flexDirection: "column",
@@ -31,9 +31,13 @@ const Discover = () => {
       >
         <Text
           fontSize={{
-            mdDown: 18,
-            lgTo2xl: 36,
+            mdDown: 42,
+            lgTo2xl: 32,
           }}
+          fontWeight={500}
+          color="black"
+          textAlign={{ mdDown: "center" }}
+          maxWidth={{ mdDown: "90%", lgTo2xl: "full" }}
         >
           Discover, learn, thrive with Dropbox
         </Text>
@@ -66,7 +70,7 @@ const Discover = () => {
         </Box>
         <Text
           fontSize={{
-            mdDown: 10,
+            mdDown: 16,
             lgTo2xl: 18,
           }}
           color="blue.600"

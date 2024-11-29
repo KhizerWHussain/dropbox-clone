@@ -9,11 +9,11 @@ interface HeroProp {
   opacity: MotionValue<number>;
 }
 
-const Hero = ({ scale }: HeroProp) => {
+const Hero = ({ scale, opacity }: HeroProp) => {
   return (
     <Box
       height={{
-        mdDown: "50vh",
+        mdDown: "100vh",
         lg: "100vh",
         xl: "90vh",
         "2xl": "90vh",
@@ -22,12 +22,17 @@ const Hero = ({ scale }: HeroProp) => {
         width: "100vw",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "center",
         backgroundColor: "black",
         position: "sticky",
         top: 0,
+      }}
+      justifyContent={{
+        mdDown: "flex-start",
+        lgTo2xl: "center",
+      }}
+      alignItems={{
+        mdDown: "flex-start",
+        lgTo2xl: "center",
       }}
     >
       <motion.div
@@ -38,12 +43,16 @@ const Hero = ({ scale }: HeroProp) => {
           alignItems: "center",
           justifyContent: "center",
           width: "100vw",
-          // opacity,
         }}
       >
         <Box
           maxWidth={{
-            lgDown: "full",
+            lgDown: "80%",
+            xl: "2/3",
+            "2xl": "2/3",
+          }}
+          width={{
+            lgDown: "80%",
             xl: "2/3",
             "2xl": "2/3",
           }}
@@ -52,17 +61,25 @@ const Hero = ({ scale }: HeroProp) => {
           gap={4}
           textAlign="center"
           alignItems="center"
+          paddingTop={{
+            mdDown: "10rem",
+          }}
         >
           <Text
+            wordSpacing={{
+              mdDown: "0.1rem",
+              lgTo2xl: "0.15rem",
+            }}
             fontSize={{
               lgTo2xl: 52,
-              md: 32,
-              mdDown: 20,
+              mdDown: 36,
             }}
             style={{
               fontWeight: 700,
               textWrap: "wrap",
-              wordSpacing: "0.15rem",
+            }}
+            lineHeight={{
+              mdDown: "1.25",
             }}
           >
             Get to work, with a lot less work
@@ -70,46 +87,53 @@ const Hero = ({ scale }: HeroProp) => {
           <Text
             fontSize={{
               lgTo2xl: 22,
-              md: 14,
-              mdDown: 10,
+              mdDown: 16,
             }}
             opacity={0.7}
             style={{
               fontWeight: 500,
             }}
-            maxWidth="3/4"
-            minWidth="3/4"
+            width={{
+              mdDown: "full",
+              lgTo2xl: "3/4",
+            }}
           >
             Dropbox delivers tools that help you move your work forward faster,
             keep it safe, and let you collaborate with ease.
           </Text>
           <Box
+            justifyContent={{
+              mdDown: "center",
+              lgTo2xl: "space-between",
+            }}
             style={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
               alignContent: "center",
-              maxWidth: "40%",
-              minWidth: "40%",
+            }}
+            width={{
+              mdDown: "full",
+              lgTo2xl: "40%",
             }}
             marginTop="6"
           >
             <Box
-              paddingBottom={{ mdDown: "0.5rem", lgTo2xl: "1.3rem" }}
-              paddingTop={{ mdDown: "0.5rem", lgTo2xl: "1.3rem" }}
-              paddingRight={{ mdDown: "0.75rem", lgTo2xl: "1.8rem" }}
-              paddingLeft={{ mdDown: "0.75rem", lgTo2xl: "1.8rem" }}
+              paddingBottom={{ mdDown: "1.5rem", lgTo2xl: "1.3rem" }}
+              paddingTop={{ mdDown: "1.5rem", lgTo2xl: "1.3rem" }}
+              paddingRight={{ mdDown: "2.25rem", lgTo2xl: "1.8rem" }}
+              paddingLeft={{ mdDown: "2.25rem", lgTo2xl: "1.8rem" }}
               display="flex"
+              backgroundColor={Colors.primary}
               style={{
                 borderRadius: "1rem",
+                alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: Colors.primary,
               }}
             >
               <Text
                 fontSize={{
-                  mdDown: 10,
                   lgTo2xl: 16,
+                  mdDown: 18,
                 }}
                 style={{
                   fontWeight: 600,
@@ -142,7 +166,6 @@ const Hero = ({ scale }: HeroProp) => {
             >
               <Text
                 fontSize={{
-                  mdDown: 12,
                   lgTo2xl: 16,
                 }}
                 style={{
@@ -171,34 +194,21 @@ const Hero = ({ scale }: HeroProp) => {
               justifyContent: "space-between",
               alignItems: "center",
               alignContent: "center",
-              maxWidth: "40%",
-              minWidth: "40%",
             }}
+            width="full"
           >
             <Text
-              fontSize={{
-                mdDown: 6,
-                lgTo2xl: 12,
-              }}
+              fontSize={12}
+              width="full"
               style={{
                 fontWeight: 400,
                 color: "white",
-                width: "50%",
               }}
               opacity={0.6}
               textAlign="center"
             >
               No credit card required
             </Text>
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignContent: "center",
-                alignItems: "center",
-                width: "50%",
-              }}
-            />
           </Box>
           <Box
             display={{
@@ -212,10 +222,7 @@ const Hero = ({ scale }: HeroProp) => {
             }}
           >
             <Text
-              fontSize={{
-                mdDown: 10,
-                lgTo2xl: 16,
-              }}
+              fontSize={16}
               style={{
                 textDecoration: "underline",
                 fontWeight: 600,

@@ -17,7 +17,7 @@ const SecurityText = () => {
       <BiLock size={48} />
       <Text
         fontSize={{
-          mdDown: 16,
+          mdDown: 24,
           lgTo2xl: 30,
         }}
         style={{ fontWeight: 550 }}
@@ -27,10 +27,11 @@ const SecurityText = () => {
       <Text
         maxW="5/6"
         fontSize={{
-          mdDown: 10,
+          mdDown: 14,
           lgTo2xl: 16,
         }}
-        style={{ textAlign: "center", opacity: 0.7 }}
+        opacity={{ mdDown: 0.5, lgTo2xl: 0.7 }}
+        style={{ textAlign: "center" }}
       >
         From industry-leading encryption and tamper-proof documents to version
         history and recovery, Dropbox keeps your intellectual property safe and
@@ -56,11 +57,11 @@ const SecurityText = () => {
         }}
       >
         <Box
-          paddingTop={{ mdDown: "0.25rem", lgTo2xl: "0.8rem" }}
-          paddingBottom={{ mdDown: "0.25rem", lgTo2xl: "0.8rem" }}
-          paddingRight={{ mdDown: "0.5rem", lgTo2xl: "1.75rem" }}
-          paddingLeft={{ mdDown: "0.5rem", lgTo2xl: "1.75rem" }}
-          borderRadius={{ mdDown: "0.5rem", lgTo2xl: "1rem" }}
+          paddingTop={{ mdDown: "1rem", lgTo2xl: "0.8rem" }}
+          paddingBottom={{ mdDown: "1rem", lgTo2xl: "0.8rem" }}
+          paddingRight={{ mdDown: "1.5rem", lgTo2xl: "1.75rem" }}
+          paddingLeft={{ mdDown: "1.5rem", lgTo2xl: "1.75rem" }}
+          borderRadius={{ mdDown: "1rem", lgTo2xl: "1rem" }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -70,7 +71,7 @@ const SecurityText = () => {
         >
           <Box
             fontSize={{
-              mdDown: 10,
+              mdDown: 16,
               lgTo2xl: 16,
             }}
             style={{
@@ -102,10 +103,10 @@ const SecurityText = () => {
               textDecoration: "underline",
               fontSize: 16,
               fontWeight: 600,
-              textUnderlineOffset: "2px",
               textDecorationThickness: "1px",
               opacity: 0.95,
             }}
+            textUnderlineOffset={{ mdDown: "4px", lgTo2xl: "2px" }}
           >
             Learn more
           </Text>

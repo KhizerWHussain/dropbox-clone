@@ -9,27 +9,19 @@ import GetApp from "./dropDowns/getApp";
 import LeftSideHeader from "./left";
 import RightSideHeader from "./right";
 import { headerOnLeftArray, headerOnRightArray } from "./data";
+import MobileHeader from "./Mobile";
 
-import {
-  MenuContent,
-  MenuItem,
-  MenuRoot,
-  MenuTrigger,
-} from "@/components/ui/menu";
+// import {
+//   MenuContent,
+//   MenuItem,
+//   MenuRoot,
+//   MenuTrigger,
+// } from "@/components/ui/menu";
 
 const Header = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  const [dropdownPosition, setDropdownPosition] = useState({
-    top: 0,
-    left: 0,
-    width: 0,
-  });
-
-  console.log("hoveredItem ==>", hoveredItem);
-
   const { scrollYProgress } = useScroll();
 
   const framerPadding = useTransform(
@@ -97,6 +89,10 @@ const Header = () => {
     <>
       {/* <MenuRoot> */}
       <VStack
+        display={{
+          mdDown: "none",
+          lgTo2xl: "flex",
+        }}
         style={{
           height: "100%",
           width: "100vw",
@@ -164,6 +160,8 @@ const Header = () => {
           </MenuContent> */}
       </VStack>
       {/* </MenuRoot> */}
+
+      <MobileHeader />
     </>
   );
 };

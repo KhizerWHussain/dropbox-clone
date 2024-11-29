@@ -12,11 +12,11 @@ interface Video_Prop {
   playerHeight?: string;
   playerWidth?: string;
   boxShadow?: string;
-  position?: Position;
-  top?: string | number;
-  right?: string | number;
-  left?: string | number;
-  bottom?: string | number;
+  position?: Position | undefined;
+  top?: string | number | undefined;
+  right?: string | number | undefined;
+  left?: string | number | undefined;
+  bottom?: string | number | undefined;
 }
 
 const Video = ({
@@ -53,6 +53,7 @@ const Video = ({
         right: right,
         left: left,
         bottom: bottom,
+        background: "none",
       }}
     />
   );

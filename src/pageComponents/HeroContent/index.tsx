@@ -20,7 +20,7 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
   return (
     <Box
       height={{
-        mdDown: "60vh",
+        mdDown: "80vh",
         lgTo2xl: "80vh",
       }}
       style={{
@@ -60,27 +60,32 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
         </motion.div>
 
         <Avatar
-          shape="square"
+          background="white"
+          shape="rounded"
           size="full"
           src={DropboxDesktopWithoutBackground.src}
           style={{
-            height: "60vh",
+            height: "70vh",
             width: "60vw",
             objectFit: "contain",
-            boxShadow: "0px 0px 16px 1px rgba(0, 0, 0, 0.5)", // Equal shadow on all sides
-            // marginTop: "-12rem",
+            boxShadow: "0px 4px 52px 32px rgba(0, 0, 0, 0.1)", // Equal shadow on all sides
+            zIndex: 50,
           }}
         />
         <Avatar
           src={DropboxMobile.src}
-          shape="square"
+          shape="rounded"
           size="full"
+          background="none"
           style={{
-            height: "40vh",
+            height: "60vh",
             width: "15vw",
+            objectFit: "contain",
             position: "absolute", // Position this avatar relative to the parent
-            top: "15%", // Adjust the vertical alignment
-            right: "20%", // Align to the middle-right side
+            top: "8%", // Adjust the vertical alignment
+            right: "15%", // Align to the middle-right side
+            boxShadow: "0px 0px 24px 1px rgba(0, 0, 0, 0.25)",
+            zIndex: 50,
           }}
         />
         <motion.div
@@ -100,14 +105,20 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
           lgTo2xl: "none",
         }}
         shape="rounded"
-        size="xs"
+        size="full"
+        height={{
+          mdDown: "100vh",
+          lgTo2xl: "50vh",
+        }}
+        width={{
+          mdDown: "4/5",
+          lgTo2xl: "60%",
+        }}
         marginTop={{
-          mdDown: "-16rem",
+          mdDown: "-18rem",
         }}
-        style={{
-          height: "50vh",
-          width: "60%",
-        }}
+        objectFit="contain"
+        background="none"
       />
     </Box>
   );
