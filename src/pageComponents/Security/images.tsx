@@ -20,7 +20,7 @@ const SecurityImages = () => {
 
   return (
     <Box
-      height={{ mdDown: "50vh", lgTo2xl: "80vh" }}
+      height={{ mdDown: "40vh", lgTo2xl: "80vh" }}
       style={{
         width: "100%",
         display: "flex",
@@ -32,30 +32,19 @@ const SecurityImages = () => {
       minWidth={{ mdDown: "90%", lgTo2xl: "60vw" }}
     >
       {/* mobile */}
-      <Box display={{ mdDown: "flex", lgTo2xl: "none" }}>
+      <Box display={{ mdDown: "block", lgTo2xl: "none" }}>
         <motion.div
-          ref={targetRef}
-          animate={isInView ? "animate" : "initial"}
-          initial="initial"
+          whileInView={{ scale: 1 }}
+          initial={{ scale: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          variants={variants}
         >
-          <Image
-            src={Security4}
-            alt="fourth"
-            width={100}
-            height={100}
-            style={{
-              width: "100vw",
-              objectFit: "contain",
-            }}
-          />
+          <Image src={Security4} alt="fourth" width={1200} height={1300} />
         </motion.div>
       </Box>
 
       {/* web  */}
       <Flex
-        display={{ mdDown: "none" }}
+        display={{ mdDown: "none", lgTo2xl: "flex" }}
         justifyContent="center" // Center all items
         alignItems="center" // Align items in the center vertically
         style={{
@@ -147,6 +136,7 @@ const SecurityImages = () => {
             left: "60%",
             zIndex: 10,
             bottom: "10%",
+            width: "60%",
           }}
           ref={targetRef}
           animate={isInView ? "animate" : "initial"}
@@ -157,15 +147,17 @@ const SecurityImages = () => {
           <Image
             src={Security4}
             alt="fourth"
-            width={1300}
-            height={1000}
+            width={1200}
+            height={1300}
             style={{
               zIndex: 10,
               height: "70vh",
-              width: "100vw",
+              width: "100%",
               marginLeft: "-8rem",
               marginTop: "-4rem",
               objectFit: "contain",
+              background: "none",
+              boxShadow: "0px 0px 24px 32px (0,0,0,0.1)",
             }}
           />
         </motion.div>

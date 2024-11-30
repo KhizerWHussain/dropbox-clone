@@ -21,12 +21,13 @@ const Companies = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}
         zIndex={50}
       >
         <Text
           fontSize={{
-            mdDown: 10,
+            mdDown: 16,
             lgTo2xl: 16,
           }}
           opacity={0.7}
@@ -49,13 +50,15 @@ const Companies = () => {
             overflow: "hidden",
           }}
         >
-          {companiesPng.map((item: any) => (
+          {companiesPng.map((item: any, i: number) => (
             <Box
-              key={item.id}
+              key={`${item.id}.${i}`}
               width={{
-                mdDown: "15vw",
-                lgTo2xl: "20vw",
+                mdDown: "35vw",
+                lgTo2xl: "10vw",
               }}
+              height={{ mdDown: "20vh", lgTo2xl: "15vh" }}
+              marginX={{ mdDown: "3rem", lgTo2xl: "4rem" }}
             >
               <Image
                 src={item.data.src}
@@ -63,8 +66,8 @@ const Companies = () => {
                 width={800}
                 height={800}
                 style={{
-                  width: "10vw",
-                  height: "20vh",
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </Box>

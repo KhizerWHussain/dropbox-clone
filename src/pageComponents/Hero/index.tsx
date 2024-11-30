@@ -195,7 +195,10 @@ const Hero = ({ scale, opacity }: HeroProp) => {
               alignItems: "center",
               alignContent: "center",
             }}
-            width="full"
+            width={{
+              mdDown: "full",
+              lgTo2xl: "40%",
+            }}
           >
             <Text
               fontSize={12}
@@ -205,10 +208,10 @@ const Hero = ({ scale, opacity }: HeroProp) => {
                 color: "white",
               }}
               opacity={0.6}
-              textAlign="center"
             >
               No credit card required
             </Text>
+            <Box width="full" display={{ mdDown: "none", lgTo2xl: "flex" }} />
           </Box>
           <Box
             display={{

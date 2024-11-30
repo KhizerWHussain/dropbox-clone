@@ -97,7 +97,7 @@ const IndustryCard = ({
                 {item.desc}
               </Text>
             </Box>
-            <Box>
+            <Box display="flex" justifyItems="center" alignItems="center">
               <Link
                 fontSize={{ mdDown: 16, lgTo2xl: 14 }}
                 padding="2"
@@ -107,7 +107,7 @@ const IndustryCard = ({
               >
                 Learn More
               </Link>
-              <IoArrowForwardOutline />
+              <IoArrowForwardOutline size={20} />
             </Box>
           </Flex>
         </Box>

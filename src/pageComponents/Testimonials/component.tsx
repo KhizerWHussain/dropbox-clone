@@ -26,7 +26,7 @@ const Testimonial = ({ item, index }: Prop) => {
       animate={isInView ? "animate" : "initial"}
       initial="initial"
       transition={{ duration: 0.4, delay: index * 0.1, ease: "easeInOut" }}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", zIndex: 50 }}
     >
       <Box
         backgroundColor="#1C1D21"

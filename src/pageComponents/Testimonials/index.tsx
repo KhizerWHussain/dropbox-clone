@@ -22,6 +22,7 @@ const settings: Settings = {
       settings: {
         slidesToShow: 1.25, // Show 1 slide on smaller screens
         slidesToScroll: 1,
+        arrows: false,
       },
     },
   ],
@@ -29,7 +30,7 @@ const settings: Settings = {
 
 const Testimonials = () => {
   return (
-    <Box width="100%">
+    <Box width="100%" zIndex="50">
       <Slider {...settings}>
         {testimonialsArray.map((item: testimonialType, i: number) => (
           <Testimonial item={item} key={`${i}.${item.id}`} index={i} />
