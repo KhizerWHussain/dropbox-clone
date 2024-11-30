@@ -134,7 +134,7 @@ const GiantText = () => {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            maxW={{ mdDown: "full", lgTo2xl: "3/5" }}
+            maxW={{ mdDown: "full", lgTo2xl: "2/3" }}
             overflowY="scroll"
             scrollBehavior="smooth"
             height="full"

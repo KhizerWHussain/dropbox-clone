@@ -47,12 +47,15 @@ export default function Span({
         <Text
           fontSize={{
             mdDown: 20,
-            lg: 32,
-            xlTo2xl: 40,
+            lgTo2xl: 42,
           }}
-          padding={{
-            lgTo2xl: 1,
-          }}
+          paddingBottom={{ lgTo2xl: 8 }}
+          paddingTop={{ lgTo2xl: 8 }}
+          paddingRight={{ lgTo2xl: 2 }}
+          paddingLeft={{ lgTo2xl: 2 }}
+          // padding={{
+          //   lgTo2xl: 5,
+          // }}
           letterSpacing={{
             mdDown: 0,
             lgTo2xl: 1,
