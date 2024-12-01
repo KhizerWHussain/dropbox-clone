@@ -20,7 +20,7 @@ const SecurityImages = () => {
 
   return (
     <Box
-      height={{ mdDown: "40vh", lgTo2xl: "80vh" }}
+      height={{ mdDown: "40vh", lgTo2xl: "60vh" }}
       style={{
         width: "100%",
         display: "flex",
@@ -29,7 +29,6 @@ const SecurityImages = () => {
         marginTop: "6rem",
       }}
       maxWidth={{ mdDown: "90%", lgTo2xl: "60vw" }}
-      minWidth={{ mdDown: "90%", lgTo2xl: "60vw" }}
     >
       {/* mobile */}
       <Box display={{ mdDown: "block", lgTo2xl: "none" }}>

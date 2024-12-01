@@ -1,15 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // optimizePackageImports: ["@chakra-ui/react"],
   compress: true,
   cacheMaxMemorySize: 0,
   cleanDistDir: true,
   distDir: ".next",
   excludeDefaultMomentLocales: true,
-  // output: "export",
   reactStrictMode: true,
   crossOrigin: "anonymous",
+  trailingSlash: false,
+  productionBrowserSourceMaps: false,
   images: {
     // domains: ["fjord.dropboxstatic.com"],
     dangerouslyAllowSVG: true,
@@ -20,6 +20,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // webpack(config) {
+  //   config.module.rules.push({
+  //     test: /\.svg$/,
+  //     use: ["@svgr/webpack"],
+  //   });
+  //   return config;
+  // },
 };
 
 export default nextConfig;

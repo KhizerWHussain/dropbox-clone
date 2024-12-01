@@ -9,12 +9,7 @@ import Security from "../Security";
 import Industries from "../Industries";
 import Discover from "../Discover";
 import { Box } from "@chakra-ui/react";
-import {
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
+import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const documentImage =
   "https://fjord.dropboxstatic.com/warp/conversion/dropbox/warp/en-us/test/homepageredesign2024/features/docsend/docsend-feature-photo.png?id=16ad971c-bbd8-4c11-a10d-7b794636ac79&output_type=png";
@@ -43,35 +38,16 @@ const Base2 = () => {
 
   return (
     <>
-      <Box ref={targetRef} style={{ position: "relative" }}>
-        {/* <motion.div
-          initial={{ opacity: 1, top: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          style={{
-            height: "100%",
-            position: "sticky",
-            // opacity,
-          }}
-        > */}
-        <GiantText />
-        {/* </motion.div>/ */}
-
-        {/* <motion.div
-          initial={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          style={{ height: "80vh", position: "sticky" }}
-        > */}
-        <ContentCollaboration
-          color="#BE4B09"
-          btnIcon={<HiOutlineUsers />}
-          btnText="Content collaboration"
-          title="Work with anyone, from anywhere, on any device"
-          desc="Dropbox delivers flexible sharing, smart organisation and seamless
+      <GiantText />
+      <ContentCollaboration
+        color="#BE4B09"
+        btnIcon={<HiOutlineUsers />}
+        btnText="Content collaboration"
+        title="Work with anyone, from anywhere, on any device"
+        desc="Dropbox delivers flexible sharing, smart organisation and seamless
             collaboration – even for those without an account – so you and your
             team can get it done, and done right."
-        />
-        {/* </motion.div> */}
-      </Box>
+      />
 
       <ContentVideoSection />
 

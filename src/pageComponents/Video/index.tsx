@@ -46,7 +46,7 @@ const Video = ({
       style={{
         objectFit: "contain",
         boxShadow: boxShadow,
-        borderRadius: "inherit",
+        borderRadius: 0,
         width: "fit-content",
         position: position,
         top: top,
@@ -54,6 +54,7 @@ const Video = ({
         left: left,
         bottom: bottom,
         background: "none",
+        backgroundColor: "transparent",
       }}
     />
   );

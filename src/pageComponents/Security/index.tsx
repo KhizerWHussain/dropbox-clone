@@ -23,7 +23,7 @@ const Security = () => {
         display={{ mdDown: "none", lgTo2xl: "flex" }}
         height={{
           mdDown: "200vh",
-          lgTo2xl: "250vh",
+          lgTo2xl: "240vh",
         }}
         style={{
           width: "100vw",
@@ -44,10 +44,9 @@ const Security = () => {
             display: "flex",
             flexDirection: "column",
             height: "100%",
-            justifyContent: "space-evenly",
             gap: "1rem",
             alignItems: "center",
-            alignContent: "center",
+            justifyContent: "space-around",
             overflow: "hidden",
           }}
         >

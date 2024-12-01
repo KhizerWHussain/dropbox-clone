@@ -53,9 +53,6 @@ export default function Span({
           paddingTop={{ lgTo2xl: 8 }}
           paddingRight={{ lgTo2xl: 2 }}
           paddingLeft={{ lgTo2xl: 2 }}
-          // padding={{
-          //   lgTo2xl: 5,
-          // }}
           letterSpacing={{
             mdDown: 0,
             lgTo2xl: 1,

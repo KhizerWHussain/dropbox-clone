@@ -2,6 +2,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import Video from "../Video";
+import { Parallax } from "react-scroll-parallax";
 
 interface DocSendProp {
   videoSource: string;
@@ -14,7 +15,7 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
       <Box
         height={{
           mdDown: "45vh",
-          lgTo2xl: "100vh",
+          lgTo2xl: "120vh",
         }}
         style={{
           widows: "100vw",
@@ -23,6 +24,7 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
           alignItems: "center",
         }}
       >
+        {/* mobile */}
         <Box display={{ lgTo2xl: "none", mdDown: "flex" }} maxWidth="90%">
           <Video
             source={videoSource}
@@ -32,6 +34,7 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
           />
         </Box>
 
+        {/* web  */}
         <Box
           display={{ mdDown: "none", lgTo2xl: "flex" }}
           maxW="11/12"
@@ -43,41 +46,56 @@ const DocSend = ({ imageSource, videoSource }: DocSendProp) => {
         >
           <Box
             display={{ mdDown: "none", lgTo2xl: "flex" }}
+            background="none"
+            backgroundColor="transparent"
             style={{
               height: "40vh",
               width: "40vw",
             }}
           />
           <Box
-            display={{ mdDown: "none" }}
+            display={{ mdDown: "none", lgTo2xl: "flex" }}
             style={{
               zIndex: 1,
             }}
+            width="10vw"
           >
-            <Video
-              source={videoSource}
-              playerHeight="60vh"
-              playerWidth="50vw"
-              boxShadow="2px 16px 24px rgba(0,0,0,0.05)"
-              position="absolute"
-              top="18%"
-              right="40%"
-            />
+            <Parallax
+              speed={15}
+              style={{
+                position: "absolute",
+                top: "15%",
+                right: "40%",
+                boxShadow: "0px 0px 42px 18px rgba(0,0,0,0.07)",
+              }}
+            >
+              <Video
+                source={videoSource}
+                playerHeight="100%"
+                playerWidth="100%"
+              />
+            </Parallax>
           </Box>
+
           <Box
             display={{
               mdDown: "none",
-              lgTo2xl: "block",
+              lgTo2xl: "flex",
             }}
-            style={{ height: "90vh", width: "50%", zIndex: 0 }}
+            style={{
+              height: "90vh",
+              width: "60%",
+              zIndex: 0,
+            }}
           >
-            <Avatar
-              src={imageSource}
-              objectFit="contain"
-              shape="rounded"
-              size="full"
-              style={{ height: "100%", width: "100%" }}
-            />
+            <Parallax speed={-5} style={{ height: "100%", width: "100%" }}>
+              <Avatar
+                src={imageSource}
+                objectFit="contain"
+                shape="rounded"
+                size="full"
+              />
+            </Parallax>
           </Box>
         </Box>
       </Box>
