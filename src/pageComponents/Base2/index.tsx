@@ -8,7 +8,6 @@ import { PiMonitorPlay } from "react-icons/pi";
 import Security from "../Security";
 import Industries from "../Industries";
 import Discover from "../Discover";
-import { Box } from "@chakra-ui/react";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const documentImage =

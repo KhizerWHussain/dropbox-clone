@@ -2,43 +2,21 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Colors } from "../../../constants";
-import { useScroll, useTransform, motion, useInView } from "framer-motion";
-import Span from "./spanText";
-
-const fullText: string =
-  "With Dropbox, you can edit and sign your documents, collaborate on projects and search across all your apps, and it happens in the same place you securely store all your content. It’s that simple :)";
+import { useScroll, useInView } from "framer-motion";
+import { giantTextArray } from "./text";
+import Words from "./words";
+import { Parallax } from "react-scroll-parallax";
 
 const GiantText = () => {
   const targetElement = useRef<HTMLDivElement | null>(null);
-  const { design } = Colors;
 
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [isAnimationStop, setIsAnimationStop] = useState<boolean>(false);
+
+  console.log("isAnimationStop ==>", isAnimationStop);
 
   const isElementInView = useInView(targetElement, {
     once: false,
   });
-
-  console.log("isAnimating ==>", isAnimating);
-
-  // useEffect(() => {
-  //   if (isElementInView) {
-  //     setIsAnimating(true);
-  //   } else {
-  //     setIsAnimating(false);
-  //   }
-  // }, [isElementInView]);
-
-  // useEffect(() => {
-  //   if (isElementInView) {
-  //     // Lock the scroll when animation starts
-  //     document.body.style.overflow = "hidden";
-  //     setIsAnimating(true);
-  //   } else {
-  //     // Unlock the scroll when animation ends
-  //     document.body.style.overflow = "auto";
-  //     setIsAnimating(false);
-  //   }
-  // }, [isElementInView]);
 
   useEffect(() => {
     // Scroll to the center of the element when it's in view
@@ -59,109 +37,59 @@ const GiantText = () => {
     }
   }, [isElementInView]);
 
-  const colorMap: { [key: string]: string } = {
-    "edit and sign": design.brownish,
-    collaborate: design.greenish,
-    search: design.purplish,
-    "securely store": design.pinkish,
-  };
-
   const { scrollYProgress } = useScroll({
     target: targetElement,
-    // offset: ["end end", "center start"],
     offset: ["end", "start"],
   });
 
-  // Handle multi-word phrases directly
-  const processedText: { text: string; color?: string }[] = [];
-  const words = fullText.split(" ");
-  let i = 0;
-
-  while (i < words.length) {
-    const currentWord = words[i];
-    const nextWord = words[i + 1] || "";
-    const nextNextWord = words[i + 2] || "";
-
-    const threeWords = `${currentWord} ${nextWord} ${nextNextWord}`;
-    const twoWords = `${currentWord} ${nextWord}`;
-
-    if (colorMap[threeWords]) {
-      processedText.push({ text: threeWords, color: colorMap[threeWords] });
-      i += 3; // Skip the next two words
-    } else if (colorMap[twoWords]) {
-      processedText.push({ text: twoWords, color: colorMap[twoWords] });
-      i += 2; // Skip the next word
-    } else if (colorMap[currentWord]) {
-      processedText.push({ text: currentWord, color: colorMap[currentWord] });
-      i += 1; // Single word with a color
-    } else {
-      processedText.push({ text: currentWord });
-      i += 1; // Regular single word
-    }
-  }
-
   return (
-    <>
-      <Box
-        style={{
-          width: "100vw",
-          display: "flex",
-          flexDirection: "column",
-          justifyItems: "center",
-          alignItems: "center",
-          alignContent: "center",
-          backgroundColor: Colors.back,
-          overflowY: "hidden",
-        }}
-        height={{
-          mdDown: "100vh",
-          lg: "100vh",
-          xlTo2xl: "120vh",
-        }}
+    // <Parallax>
+    <Box
+      style={{
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        justifyItems: "center",
+        alignItems: "center",
+        alignContent: "center",
+        backgroundColor: Colors.back,
+        overflowY: "auto",
+        scrollBehavior: "smooth",
+      }}
+      height={{
+        mdDown: "100vh",
+        lg: "100vh",
+        xlTo2xl: "120vh",
+      }}
+    >
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        maxW={{ mdDown: "full", lgTo2xl: "2/3" }}
+        height="full"
       >
-        <motion.div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "100%",
-            overflowY: "scroll",
-            scrollBehavior: "smooth",
-          }}
-        >
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            maxW={{ mdDown: "full", lgTo2xl: "2/3" }}
-            overflowY="scroll"
-            scrollBehavior="smooth"
-            height="full"
-          >
-            <Box ref={targetElement}>
-              {processedText.map((item, i) => {
-                const start = i / processedText.length;
-                const end = start + 1 / processedText.length;
+        <Box ref={targetElement}>
+          {giantTextArray.map((item: string, i: number) => {
+            const start = i / giantTextArray.length;
+            const end = start + 1 / giantTextArray.length;
 
-                return (
-                  <Span
-                    key={`${i}.${item.text}`}
-                    range={[start, end]}
-                    progress={scrollYProgress}
-                    wordColor={item.color || "black"}
-                    hasOpacity={!item.color}
-                    onAnimationComplete={() => setIsAnimating(false)}
-                  >
-                    {item.text}
-                  </Span>
-                );
-              })}
-            </Box>
-          </Flex>
-        </motion.div>
-      </Box>
-    </>
+            return (
+              <Words
+                range={[start, end]}
+                key={i}
+                progress={scrollYProgress}
+                onAnimationComplete={() => setIsAnimationStop(true)}
+              >
+                {item}
+              </Words>
+            );
+          })}
+        </Box>
+      </Flex>
+      {/* <Flex backgroundColor={Colors.back} height="full"></Flex> */}
+    </Box>
+    // </Parallax>
   );
 };
 
