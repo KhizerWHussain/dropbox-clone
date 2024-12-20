@@ -1,18 +1,20 @@
 "use client";
-import React, { useRef } from "react";
-import Header from "@/pageComponents/Header";
-import Hero from "../Hero";
-import HeroContent from "../HeroContent";
+import React, { useRef, lazy, Suspense } from "react";
+const Header = lazy(() => import("@/pageComponents/Header"));
+
+import Base2 from "../Base2";
+
+const Hero = lazy(() => import("../Hero"));
+const HeroContent = lazy(() => import("../HeroContent"));
+const Footer = lazy(() => import("../Footer"));
+
 import {
   motion,
   AnimatePresence,
   useScroll,
   useTransform,
-  useMotionValueEvent,
 } from "framer-motion";
 import { Box } from "@chakra-ui/react";
-import Base2 from "../Base2";
-import Footer from "../Footer";
 
 const Base = () => {
   const targetRef = useRef<any | null>(null);
@@ -22,16 +24,15 @@ const Base = () => {
     offset: ["start start", "end end"],
   });
 
-  useMotionValueEvent(scrollY, "change", () => {
-    // console.log(scrollY.get());
-  });
-
   const scale = useTransform(scrollY, [0, 350], [1, 0.95]);
   const opacity = useTransform(scrollY, [0, 350], [1, 0]);
 
   return (
     <>
-      <Header />
+      <Suspense fallback={null}>
+        <Header />
+      </Suspense>
+
       <Box ref={targetRef} position="relative" color="white">
         <Box style={{ position: "sticky" }}>
           <AnimatePresence mode="sync">
@@ -45,7 +46,9 @@ const Base = () => {
                 opacity,
               }}
             >
-              <Hero scale={scale} opacity={opacity} />
+              <Suspense fallback={null}>
+                <Hero scale={scale} opacity={opacity} />
+              </Suspense>
             </motion.div>
             <motion.div
               key="hero-content"
@@ -53,7 +56,9 @@ const Base = () => {
               transition={{ duration: 1.5, ease: "easeInOut" }}
               style={{ height: "80vh", position: "sticky" }}
             >
-              <HeroContent scale={scale} opacity={opacity} />
+              <Suspense fallback={null}>
+                <HeroContent opacity={opacity} />
+              </Suspense>
             </motion.div>
           </AnimatePresence>
         </Box>

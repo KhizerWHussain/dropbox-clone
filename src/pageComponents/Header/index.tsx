@@ -2,7 +2,6 @@
 import React, { useRef, useState } from "react";
 import { Box, VStack } from "@chakra-ui/react";
 import { useScroll, useTransform, motion } from "framer-motion";
-
 import ProductDropDown from "./dropDowns/product";
 import SolutionDropDown from "./dropDowns/solution";
 import GetApp from "./dropDowns/getApp";
@@ -10,13 +9,6 @@ import LeftSideHeader from "./left";
 import RightSideHeader from "./right";
 import { headerOnLeftArray, headerOnRightArray } from "./data";
 import MobileHeader from "./Mobile";
-
-// import {
-//   MenuContent,
-//   MenuItem,
-//   MenuRoot,
-//   MenuTrigger,
-// } from "@/components/ui/menu";
 
 const Header = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -50,8 +42,6 @@ const Header = () => {
   };
 
   const handleMouseLeave = () => {
-    // setHoveredItem(null);
-
     hoverTimeout.current = setTimeout(() => {
       setHoveredItem(null);
     }, 200); // Delay to avoid flickering
@@ -147,19 +137,7 @@ const Header = () => {
         >
           {loadDropDownComponent()}
         </Box>
-
-        {/* <MenuContent
-            position="fixed"
-            style={{
-              backgroundColor: "black",
-              display: "flex",
-              width: "100vw",
-            }}
-          >
-            {loadDropDownComponent()}
-          </MenuContent> */}
       </VStack>
-      {/* </MenuRoot> */}
 
       <MobileHeader />
     </>

@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-// import DropboxDesktop from "../../../public/images/hero/hero-desktop.png";
 
 import DropboxMobile from "../../../public/images/hero/hero-mobile.png";
 import DropboxDesktopWithoutBackground from "../../../public/images/hero/heroDesktop.png";
@@ -12,11 +11,13 @@ import { motion } from "framer-motion";
 import { Colors } from "../../../constants";
 
 interface HeroProp {
-  scale?: any;
   opacity: any;
 }
 
-const HeroContent = ({ scale, opacity }: HeroProp) => {
+const source =
+  "https://fjord.dropboxstatic.com/warp/conversion/dropbox/warp/en-us/test/homepageredesign2024/hero/all-files-desktop-en_GB.png?id=e6b22640-bccc-4e88-a817-c28e0c80b615&width=2880&output_type=png";
+
+const HeroContent = ({ opacity }: HeroProp) => {
   return (
     <Box
       height={{
@@ -25,15 +26,10 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
       }}
       style={{
         width: "100vw",
-        // height: opacity === 1 ? "fit-content" : "80vh",
-        // height: opacity === 0 ? "80vh" : "fit-content",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        // overflow: "hidden",
-        // marginTop: "-2rem",
-        // backgroundColor: opacity === 0 ? Colors.back : "transparent",
         backgroundColor: Colors.back,
       }}
     >
@@ -60,14 +56,15 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
         </motion.div>
 
         <Avatar
-          background="white"
+          background="none"
           shape="rounded"
           size="full"
-          src={DropboxDesktopWithoutBackground.src}
+          // src={DropboxDesktopWithoutBackground.src}
+          src={source}
           style={{
             height: "70vh",
             width: "60vw",
-            objectFit: "contain",
+            objectFit: "cover",
             boxShadow: "0px 4px 52px 32px rgba(0, 0, 0, 0.1)", // Equal shadow on all sides
             zIndex: 50,
           }}
@@ -80,7 +77,7 @@ const HeroContent = ({ scale, opacity }: HeroProp) => {
           style={{
             height: "60vh",
             width: "15vw",
-            objectFit: "contain",
+            objectFit: "cover",
             position: "absolute", // Position this avatar relative to the parent
             top: "8%", // Adjust the vertical alignment
             right: "15%", // Align to the middle-right side

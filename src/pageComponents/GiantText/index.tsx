@@ -5,7 +5,6 @@ import { Colors } from "../../../constants";
 import { useScroll, useInView } from "framer-motion";
 import { giantTextArray } from "./text";
 import Words from "./words";
-import { Parallax } from "react-scroll-parallax";
 
 const GiantText = () => {
   const targetElement = useRef<HTMLDivElement | null>(null);
@@ -43,7 +42,6 @@ const GiantText = () => {
   });
 
   return (
-    // <Parallax>
     <Box
       style={{
         width: "100vw",
@@ -87,9 +85,7 @@ const GiantText = () => {
           })}
         </Box>
       </Flex>
-      {/* <Flex backgroundColor={Colors.back} height="full"></Flex> */}
     </Box>
-    // </Parallax>
   );
 };
 
