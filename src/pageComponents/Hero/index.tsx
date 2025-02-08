@@ -22,7 +22,6 @@ const Hero = ({ scale, opacity }: HeroProp) => {
         width: "100vw",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "black",
         position: "sticky",
         top: 0,
       }}
@@ -84,6 +83,7 @@ const Hero = ({ scale, opacity }: HeroProp) => {
           >
             Get to work, with a lot less work
           </Text>
+
           <Text
             fontSize={{
               lgTo2xl: 22,
@@ -101,6 +101,7 @@ const Hero = ({ scale, opacity }: HeroProp) => {
             Dropbox delivers tools that help you move your work forward faster,
             keep it safe, and let you collaborate with ease.
           </Text>
+
           <Box
             justifyContent={{
               mdDown: "center",

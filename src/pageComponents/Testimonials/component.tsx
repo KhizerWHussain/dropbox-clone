@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex, Link, Text } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { FaPlayCircle } from "react-icons/fa";

@@ -20,7 +20,6 @@ const Industries = () => {
         height={{ mdDown: "180vh", lgTo2xl: "150vh" }}
         style={{
           width: "100vw",
-          // height: "150vh",
           backgroundColor: "white",
           display: "flex",
           flexDirection: "column",

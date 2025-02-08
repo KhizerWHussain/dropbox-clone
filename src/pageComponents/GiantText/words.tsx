@@ -6,15 +6,9 @@ interface SpanProp {
   children: any;
   range: [number, number];
   progress: MotionValue<number>;
-  onAnimationComplete: () => void;
 }
 
-export default function Words({
-  children,
-  range,
-  progress,
-  onAnimationComplete,
-}: SpanProp) {
+export default function Words({ children, range, progress }: SpanProp) {
   const opacity = useTransform(progress, range, [0.25, 1]);
 
   return (
@@ -35,8 +29,6 @@ export default function Words({
           opacity: typeof children !== "string" ? 1 : opacity,
         }}
         transition={{ duration: 0.25, delay: 0.1, ease: "easeInOut" }}
-        // onAnimationComplete={onAnimationComplete}
-        onAnimationEnd={onAnimationComplete}
       >
         <Text
           fontSize={{

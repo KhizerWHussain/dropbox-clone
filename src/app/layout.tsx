@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ReactNode } from "react";
+import { lazy, ReactNode, Suspense } from "react";
 import { Provider } from "@/components/ui/provider";
 import { ReactScrollParallax } from "@/pageComponents/ParallaxProvider";
+const Header = lazy(() => import("@/pageComponents/Header"));
+const Footer = lazy(() => import("@/pageComponents/Footer"));
 
 export const metadata: Metadata = {
   title: "Dropbox",
@@ -18,7 +20,13 @@ export default function RootLayout({ children }: Readonly<RootLayoutProp>) {
     <html lang="en">
       <body>
         <Provider>
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
           <ReactScrollParallax>{children} </ReactScrollParallax>
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
         </Provider>
       </body>
     </html>

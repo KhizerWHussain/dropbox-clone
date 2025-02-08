@@ -1,0 +1,182 @@
+“use client”;
+import { useScroll, motion, useTransform } from “framer-motion”;
+import React, { useRef } from “react”;
+import img from “../../../../assets/images/Home.jpg”;
+import Image from “next/image”;
+import { HiOutlineSearch } from “react-icons/hi”;
+import { PiPencilLineDuotone } from “react-icons/pi”;
+import { IoMdChatboxes } from “react-icons/io”;
+import { BiLock } from “react-icons/bi”;
+function ScrolCharacter() {
+  const paragraph = `With Dropbox, you can edit and sign your documents, collaborate on projects and search across all your apps, and it happens in the same place you securely store all your content. It’s that simple :)`;
+  const element = useRef(null);
+  const words = paragraph.split(” “);
+  // Add icons in specific places
+  words.splice(
+    7,
+    0,
+    <PiPencilLineDuotone
+      key=“icon1”
+      className=“inline-block cursor-pointer text-CC_Clr_Orange”
+    />
+  );
+  words.splice(
+    11,
+    0,
+    <IoMdChatboxes key=“icon2” className=“inline-block text-CC_Clr_Green” />
+  );
+  words.splice(
+    16,
+    0,
+    <HiOutlineSearch key=“icon3” className=“inline-block text-CC_Clr_Purple” />
+  );
+  words.splice(
+    31,
+    0,
+    <BiLock key=“icon4” className=“inline-block text-CC_Clr_PurpleLite” />
+  );
+  const { scrollYProgress } = useScroll({
+    target: element,
+    offset: [“start start”, “end end”],
+  });
+  let andCounter = 0;
+  const specialWordsStyles: {
+    [key: string]: { color: string; hoverImage: any; cursor: any };
+  } = {
+    edit: { color: “#9B6400”, cursor: “pointer”, hoverImage: img },
+    and: { color: “#9B6400”, cursor: “pointer”, hoverImage: img },
+    sign: { color: “#9B6400”, hoverImage: img, cursor: “pointer” },
+    collaborate: { color: “#0F503C”, cursor: “pointer”, hoverImage: img },
+    search: { color: “#78286E”, hoverImage: img, cursor: “pointer” },
+    securely: { color: “#CD2F7B”, hoverImage: img, cursor: “pointer” },
+    store: { color: “#CD2F7B”, hoverImage: img, cursor: “pointer” },
+  };
+  const textY = useTransform(scrollYProgress, [0, 1], [0, “-100vh”]);
+  return (
+    <div ref={element} className=“relative h-[400vh]“>
+      <motion.div
+        ref={element}
+        style={{ y: textY }}
+        className=“text-regal-black px-48 tracking-wide text-[2.8vw] font-belfast-extra-bold flex flex-wrap sticky py-[20vw] top-0 h-[100vh] w-full bg-main-black z-10”
+      >
+        {words.map((word: any, i: any) => {
+          const start = i / words.length;
+          const end = start + 1 / words.length;
+          let wordStyles;
+          if (typeof word === “string” && word === “and”) {
+            if (andCounter === 0) {
+              wordStyles = {
+                color: “#9B6400",
+                hoverImage: img,
+                cursor: “pointer”,
+              };
+              andCounter++;
+            } else {
+              wordStyles = { color: “inherit” };
+            }
+          } else {
+            const wordWithoutPunctuation =
+              typeof word === “string” ? word.replace(/[.,]/g, “”) : word;
+            wordStyles = specialWordsStyles[wordWithoutPunctuation] || {
+              color: “inherit”,
+              cursor: “pointer”,
+            };
+          }
+          return (
+            <WordComp
+              key={i}
+              range={[start, end]}
+              progress={scrollYProgress}
+              styles={wordStyles}
+            >
+              {word}
+            </WordComp>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+}
+export default ScrolCharacter;
+interface WordCompProps {
+  children: any;
+  range: any;
+  progress: any;
+  styles: {
+    color: string;
+    hoverImage?: any;
+  };
+}
+const WordComp = ({ children, range, progress, styles }: WordCompProps) => {
+  // Handle both text and JSX elements
+  const renderCharacters = () => {
+    if (typeof children === “string”) {
+      const characters = children.split(“”); // Split string into characters
+      const amount = range[1] - range[0];
+      const step = amount / characters.length;
+      return characters.map((character: any, i: any) => {
+        const start = range[0] + step * i;
+        const end = range[0] + step * (i + 1);
+        return (
+          <CharacterPara
+            key={i}
+            range={[start, end]}
+            progress={progress}
+            styles={styles}
+          >
+            <div className=“inline overflow-hidden “>{character}</div>
+          </CharacterPara>
+        );
+      });
+    } else {
+      // If it’s not a string (like an icon), return it as-is
+      return <span>{children}</span>;
+    }
+  };
+  return (
+    <span className=“mr-[0.77vw] leading-[4vw]“>{renderCharacters()}</span>
+  );
+};
+interface CharacterParaProps {
+  children: any;
+  range: any;
+  progress: any;
+  styles: {
+    color: string;
+    hoverImage?: any;
+  };
+}
+const CharacterPara = ({
+  children,
+  range,
+  progress,
+  styles,
+}: CharacterParaProps) => {
+  const opacity = useTransform(progress, range, [0.05, 1]);
+  return (
+    <motion.span
+      style={{
+        opacity,
+        color: styles.color,
+      }}
+      className=“relative overflow-hidden”
+    >
+      {styles.hoverImage ? (
+        <span className=“relative group overflow-hidden”>
+          {children}
+          <div className=“absolute bg-yellow-300 justify-center items-center z-50 w-[25vw] h-auto text- font-belfast-regular text-sm p-4 rounded-xl hidden group-hover:block transition-opacity duration-700”>
+            <Image
+              src={styles.hoverImage}
+              alt=“Hover-image”
+              width={800}
+              height={600}
+              className=“rounded-xl w-72”
+            />
+          </div>
+        </span>
+      ) : (
+        children
+      )}
+    </motion.span>
+  );
+};
